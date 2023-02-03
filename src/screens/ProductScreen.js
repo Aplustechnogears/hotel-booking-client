@@ -4,7 +4,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import {useDispatch, useSelector} from 'react-redux';
-import {Row, Col, Card, Button, Image, ListGroup, Form} from 'react-bootstrap';
+import {Row, Col, Card, Button, Image, ListGroup, Form, Container} from 'react-bootstrap';
 import Rating from '../components/Rating';
 import { listProductDetails } from '../actions/productActions';
 
@@ -33,7 +33,8 @@ const ProductScreen = ({ history,match }) =>{
     }
 
 
-    return <div>
+    return <Container> 
+    <div>
         <Link className="btn btn-light my-3" to="/" >Go back</Link>
         { loading? <Loader /> :error ? <Message variant="danger" >{error}</Message> 
         :<>
@@ -113,6 +114,7 @@ const ProductScreen = ({ history,match }) =>{
         </Row>
         </>}
     </div>
+    </Container>
 }
 
 export default ProductScreen;

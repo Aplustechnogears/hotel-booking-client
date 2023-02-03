@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Container } from 'react-bootstrap';
+// import { Container } from 'react-bootstrap';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -19,6 +19,8 @@ import OrderListScreen from './screens/OrderListScreen';
 import VerifyScreen from './screens/VerifyScreen';
 
 import {  Route, HashRouter as Router } from 'react-router-dom';
+import AboutScreen from './screens/AboutScreen';
+import ContactScreen from './screens/ContactScreen';
 
 
 
@@ -26,8 +28,8 @@ function App() {
   return (
     <Router>
     <Header />
-    <main className="py-3" >
-      <Container>
+    <main >
+      {/* <Container> */}
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="/verifyAccount" component={VerifyScreen} />
         <Route path="/shipping" component={ShippingScreen} />
@@ -44,9 +46,12 @@ function App() {
         <Route path="/admin/orderlist" component={OrderListScreen} />
         <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
         <Route path="/page/:pageNumber" component ={HomeScreen} exact />
+        <Route path="/about" component ={AboutScreen} exact />
+        <Route path="/contact" component ={ContactScreen} exact />
+
         <Route path="/" component ={HomeScreen} exact />
 
-      </Container>
+      {/* </Container> */}
     </main>
     <Footer />
     </Router>

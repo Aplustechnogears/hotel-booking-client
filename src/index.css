@@ -141,7 +141,10 @@ h1{
 }
 
 .carousel-image{
-  border-radius: 20px;
+  opacity: 0.9;
+  height:90vh;
+  width: 100vw;
+  border-radius: 0 0 10px 10px;
 }
 
 /* Trending Rooms */
@@ -161,6 +164,12 @@ h1{
   width: 100%;
   height: 30vh;
   border-radius: 10px;
+}
+
+.founder-card-image{
+  width: 100%;
+  border-radius: 10px 10px 0 0 ;
+
 }
 
 .room-card-container{
@@ -205,6 +214,19 @@ h1{
   border: none;
   font-size: 16px;
   transition: 100ms ease-in-out;
+}
+
+.founder-text{
+  margin: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 16px;
+  font-weight: 300;
+  transition: 100ms ease-in-out;
+  padding: 0;
 }
 
 .book-room-btn:hover{
@@ -279,4 +301,66 @@ h1{
 .flex-justify-center{
   display: flex;
   justify-content: center;
+}
+
+
+/* other page styles */
+
+.contain-each-board{
+  background-image: url('/images/bg1.jpeg') ;
+  height: 70vh;
+  width: 95vw;
+  opacity: 0.95;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.banner-title{
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.banner-btn{
+  background-color: #0c0c0c;
+  color: white;
+  width: 10rem;
+  border: none;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  align-self: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 200ms;
+}
+
+.banner-btn:hover{
+  background-color: #666666;
+}
+
+.form-container{
+  padding: 3rem 0;
+}
+
+.textarea{
+  width: 100%;
+  border: none;
+  background: #f7f9f9;
+  padding: 1rem;
+}
+
+.map-iframe{
+  width: 95vw;
+  height: 60vh;
+  border: none;
+  border-radius: 10px;
+}
+.map-container{
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
 }

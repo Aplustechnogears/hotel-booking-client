@@ -26,8 +26,15 @@ const Header = () =>{
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
                 <LinkContainer to="/cart" >
-                    <Nav.Link > <i className="fas fa-shopping-cart" ></i> Cart</Nav.Link>
+                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> Cart</Nav.Link>
                 </LinkContainer>
+                <LinkContainer to="/about" >
+                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> About</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/contact" >
+                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> Contact Us</Nav.Link>
+                </LinkContainer>
+
                 { userInfo ? <NavDropdown title={userInfo.name} id='username'  >
                     <LinkContainer to='/profile' >
                         <NavDropdown.Item>Profile</NavDropdown.Item>
@@ -36,7 +43,7 @@ const Header = () =>{
 
                 </NavDropdown> 
                 : <LinkContainer to="/login" >
-                    <Nav.Link > <i className="fas fa-user" ></i>Sign In</Nav.Link>
+                    <Nav.Link > <i className="fa fa-user" ></i>Sign In</Nav.Link>
                 </LinkContainer>}
                 { (userInfo && userInfo.isAdmin ) ?  <NavDropdown title='Admin' id='adminMenu'  >
                     <LinkContainer to='/admin/userlist' >

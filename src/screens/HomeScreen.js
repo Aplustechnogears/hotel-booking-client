@@ -1,13 +1,14 @@
-    import React,{ useEffect} from 'react';
-    import { Col} from 'react-bootstrap';
-    import Product from '../components/Product';
-    import Loader from '../components/Loader';
-    import Message from '../components/Message';
-    import Meta from '../components/Meta';
-    import { useDispatch, useSelector } from 'react-redux';
-    import { listProducts } from '../actions/productActions';
-    import DarkVariantCarousel from '../components/Carousel';
-    import EachHotelFacility from '../components/EachhotelFacility';
+import React,{ useEffect} from 'react';
+import { Col} from 'react-bootstrap';
+import Product from '../components/Product';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import Meta from '../components/Meta';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productActions';
+import DarkVariantCarousel from '../components/Carousel';
+import EachHotelFacility from '../components/EachhotelFacility';
+import { Container } from 'react-bootstrap';
 
 
     const HOTEL_FACILITIES = [
@@ -42,8 +43,9 @@
             {/* <img src='/images/hero.jpg' alt="" className='hero-image' /> */}
             <DarkVariantCarousel />
 
-            {/* Trending Rooms Container */}
-            <section className='trending-rooms-container' >
+            <Container>
+           {/* Trending Rooms Container */}
+           <section className='trending-rooms-container' >
                 <h1 className='home-page-title' >Trending Rooms</h1>
                 { loading? <Loader />: error ? <Message>{error}</Message>
                 : <>
@@ -78,6 +80,8 @@
                 
             </section>
             {/* Hotel Facilities */}
+ 
+            </Container>
         
             
         </div>

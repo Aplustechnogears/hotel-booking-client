@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -42,7 +42,7 @@ const RegisterScreen = ({ location, history }) => {
         }
     }
 
-    return <FormContainer>
+    return <Container> <FormContainer>
         <h1>Create New Account </h1>
         { error ? <Message variant="danger" >  {error} </Message>: null }
         { message ? <Message variant="danger" >{message} </Message>: null }
@@ -88,6 +88,7 @@ const RegisterScreen = ({ location, history }) => {
             </Col>
         </Row>
     </FormContainer>
+    </Container>
 }
 
 export default RegisterScreen;

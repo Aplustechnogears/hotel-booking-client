@@ -2,7 +2,7 @@ import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import { Link} from 'react-router-dom';
-import { Row, Col, Form, ListGroup, Card, Image, Button } from 'react-bootstrap';
+import { Row, Col, Form, ListGroup, Card, Image, Button, Container } from 'react-bootstrap';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 
 const CartScreen = ({ match , location, history }) =>{
@@ -33,7 +33,8 @@ const CartScreen = ({ match , location, history }) =>{
         history.push('/login?redirect=shipping')
     }
 
-    return <Row>
+    return <Container>
+     <Row>
         <Col md={8} >
             <h1>Cart</h1>
             { cartItems.length===0 ? <Message>cart is empty<Link to="/" > Go Back</Link></Message> : <ListGroup variant="flush" >
@@ -86,6 +87,7 @@ const CartScreen = ({ match , location, history }) =>{
         </Col>
         
     </Row>
+    </Container>
 }
 
 export default CartScreen;

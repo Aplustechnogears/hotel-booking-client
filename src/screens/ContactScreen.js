@@ -3,6 +3,10 @@ import Meta from '../components/Meta';
 import EachHotelFacility from '../components/EachhotelFacility';
 import { Container } from 'react-bootstrap';
 import {  Form, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { emailValidation } from '../utils/helpers';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
 
 const HOTEL_FACILITIES = [
     { image: "fa fa-facebook", text: "Facebook" },
@@ -18,9 +22,40 @@ const ContactScreen = () => {
     const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
     const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(''); 
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
+        const isEmailValid = emailValidation(email);
+        if( name.length && isEmailValid.isValid && message.length ){
+            setError('');
+            setLoading(true)
+            try {
+
+                const config = {
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                }
+        
+               const  response = await axios.post('https://hotel-server-nbih.onrender.com/api/users/contact', { email, name, message, city }, config);        
+                console.log('response',response.data.message);
+                setSuccess(response.data.message)
+                setError('');
+
+            } catch (error) {
+                console.log('error',error);
+             setError(error?.message);   
+            } finally{
+                setLoading(false);
+            }
+    
+        }else{
+            setError("Inpur Fields are not valid");
+            setSuccess('');    
+        }
     }
 
     return <div className='container1' >
@@ -36,11 +71,13 @@ const ContactScreen = () => {
 
                 <h1 className='home-page-title' >Contact US</h1>
 
+                    { error.length ? <Message variant="danger" > {error} </Message> : null }
+                    { success.length ? <Message variant="success" > {success} </Message> : null }
                     <Form onSubmit={handleFormSubmit} >
                         <Form.Group controlId="email" >
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                                type="email" value={name}
+                                type="text" value={name}
                                 placeholder="Name" onChange={e => setName(e.target.value)} >
                             </Form.Control>
                         </Form.Group>
@@ -67,8 +104,8 @@ const ContactScreen = () => {
                             </div>
                         </Form.Group>
 
-
-                        <Button type="submit" variant="primary" > Submit</Button>
+                        { loading ? <Loader /> : <Button type="submit" variant="primary" > Submit</Button> }
+                        
                     </Form>
             </section>
             {/* Make Contact Form  */}

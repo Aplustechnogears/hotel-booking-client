@@ -21,6 +21,7 @@ import VerifyScreen from './screens/VerifyScreen';
 import {  Route, HashRouter as Router } from 'react-router-dom';
 import AboutScreen from './screens/AboutScreen';
 import ContactScreen from './screens/ContactScreen';
+import RoomsScreen from './screens/RoomsScreen';
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/page/:pageNumber" component ={HomeScreen} exact />
         <Route path="/about" component ={AboutScreen} exact />
         <Route path="/contact" component ={ContactScreen} exact />
+        <Route path="/rooms" component ={RoomsScreen} exact />
 
         <Route path="/" component ={HomeScreen} exact />
 

@@ -5,6 +5,7 @@ import EachHotelFacility from '../components/EachhotelFacility';
 import { Container } from 'react-bootstrap';
 import EachFounder from '../components/EachFounder';
 import { useHistory } from 'react-router-dom';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
     const HOTEL_FACILITIES = [
@@ -28,9 +29,9 @@ import { useHistory } from 'react-router-dom';
 
         const history = useHistory();
 
-        const handleBookNowClick = () =>{
-            history.push('/rooms')
-        }
+        // const handleBookNowClick = () =>{
+        //     history.push('/rooms')
+        // }
 
         return <div className='container1' >
             <Meta  />
@@ -56,14 +57,7 @@ import { useHistory } from 'react-router-dom';
             </Container>
 
             {/* Book now section */}
-            <section>
-                <div className='center-content' >
-                    <div className='contain-each-board' >
-                        <h4 className='banner-title' > luxury rooms.</h4>
-                        <button className='banner-btn' onClick={handleBookNowClick} >Book Now</button>
-                    </div>
-                </div>
-            </section>
+            <RoomSearchWithBackground />
             {/* Book now section */}
 
             {/* Hotel Facilities */}

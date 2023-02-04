@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Button , Form} from 'react-bootstrap';
+import {Button , Container, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -89,7 +89,8 @@ const ProductEditScreen = ({ match, history }) => {
         }
     
 
-    return <div>
+    return <Container> 
+    <div>
         <Link to='/admin/productlist' className="btn btn-light my-3" >
             Go Back
         </Link>
@@ -145,6 +146,7 @@ const ProductEditScreen = ({ match, history }) => {
         </FormContainer>
 
     </div>
+    </Container>
 }
 
 export default ProductEditScreen;

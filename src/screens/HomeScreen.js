@@ -6,9 +6,9 @@ import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
-import DarkVariantCarousel from '../components/Carousel';
 import EachHotelFacility from '../components/EachhotelFacility';
 import { Container } from 'react-bootstrap';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
     const HOTEL_FACILITIES = [
@@ -41,7 +41,7 @@ import { Container } from 'react-bootstrap';
         return <div className='container1' >
             <Meta  />
             {/* <img src='/images/hero.jpg' alt="" className='hero-image' /> */}
-            <DarkVariantCarousel />
+            <RoomSearchWithBackground />
 
             <Container>
            {/* Trending Rooms Container */}
@@ -50,7 +50,7 @@ import { Container } from 'react-bootstrap';
                 { loading? <Loader />: error ? <Message>{error}</Message>
                 : <>
                 <div className="flex-wrap" >
-                    {products.map( (product)=>{
+                    {products.slice(0,3).map( (product)=>{
                         return <Col key={product._id} >
                         <Product product={product} />
                         </Col>

@@ -7,7 +7,7 @@ export const listProducts = ( keyword= '' , pageNumber='' ) => async (dispatch) 
     try{
         dispatch({ type: PRODUCT_LIST_REQUEST  })
 
-        const { data } = await axios.get(`http://localhost:5000/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
+        const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
@@ -27,7 +27,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     try{
         dispatch({ type: PRODUCT_DETAILS_REQUEST  })
 
-        const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/products/${id}`);
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -56,7 +56,7 @@ export const deleteProduct = ( id ) => async (dispatch, getState) => {
             }
         }
 
-        await axios.delete(`http://localhost:5000/api/products/${id}`,config);
+        await axios.delete(`https://hotel-server-nbih.onrender.com/api/products/${id}`,config);
 
         dispatch({
             type:PRODUCT_DELETE_SUCCESS,
@@ -86,7 +86,7 @@ export const createProduct = ( ) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.post(`http://localhost:5000/api/products`,{},config);
+        const {data} = await axios.post(`https://hotel-server-nbih.onrender.com/api/products`,{},config);
 
         dispatch({
             type:PRODUCT_CREATE_SUCCESS,
@@ -118,7 +118,7 @@ export const updateProduct = ( product ) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.put(`http://localhost:5000/api/products/${product._id}`,product,config);
+        const {data} = await axios.put(`https://hotel-server-nbih.onrender.com/api/products/${product._id}`,product,config);
 
         dispatch({
             type:PRODUCT_UPDATE_SUCCESS,
@@ -139,7 +139,7 @@ export const listTopProducts = (  ) => async (dispatch) => {
     try{
         dispatch({ type: PRODUCT_TOP_REQUEST  })
 
-        const { data } = await axios.get(`http://localhost:5000/api/products/top`);
+        const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/products/top`);
 
         dispatch({
             type: PRODUCT_TOP_SUCCESS,

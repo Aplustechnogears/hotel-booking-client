@@ -46,7 +46,7 @@ const OrderScreen = ({ match, history }) => {
         }
         const addPayPalScript = async () => {
             console.log('i am here');
-            const { data: clientId } = await axios.get('http://localhost:5000/api/config/paypal');
+            const { data: clientId } = await axios.get('https://hotel-server-nbih.onrender.com/api/config/paypal');
             const script = document.createElement('script');
             script.type = "text/javascript"
             script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
@@ -61,7 +61,7 @@ const OrderScreen = ({ match, history }) => {
         }
 
         const verifyHandler =  async () => {
-            const { data } = await axios.get(`http://localhost:5000/api/users/${userInfo._id}`);
+            const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/users/${userInfo._id}`);
             setEmailVerify(data.emailVerified);
             setVerifyLoader(false);
         }
@@ -69,7 +69,7 @@ const OrderScreen = ({ match, history }) => {
         verifyHandler();
 
         const checkPayment =  () =>{
-            axios.get(`http://localhost:5000/api/payment/paytm/${orderId}`).then((resp)=>{
+            axios.get(`https://hotel-server-nbih.onrender.com/api/payment/paytm/${orderId}`).then((resp)=>{
                 if(resp.data.length){
                     if(!order.isPaid){
                         console.log('i am trying');

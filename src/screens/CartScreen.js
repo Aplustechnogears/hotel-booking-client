@@ -62,7 +62,7 @@ const CartScreen = ({ match , location, history }) =>{
                             </Col>
                             <Col md={2} >
                                 <Button type="button" variant ='light' onClick={()=> removeFromCartHandler(item.product) } >
-                                    <i className="fas fa-trash" ></i>
+                                    <i className="fa fa-trash" ></i>
                                 </Button>
                             </Col>
 

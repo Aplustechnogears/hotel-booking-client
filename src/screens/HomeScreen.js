@@ -9,6 +9,8 @@ import { listProducts } from '../actions/productActions';
 import EachHotelFacility from '../components/EachhotelFacility';
 import { Container } from 'react-bootstrap';
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
+import { useHistory } from 'react-router-dom';
+import EachPackage from '../components/EachPackage';
 
 
     const HOTEL_FACILITIES = [
@@ -25,6 +27,7 @@ import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
     const HomeScreen =  ({ match }) =>{
 
         const dispatch = useDispatch()
+        const history = useHistory();
         const keyword = match.params.keyword 
         const pageNumber = match.params.pageNumber || 1
 
@@ -32,6 +35,10 @@ import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
         const productList = useSelector(state=> state.productList )
         const { products, error, loading } = productList
+
+        const handleBookNowClick = () =>{
+            history.push('/rooms')
+        }
 
         useEffect(()=>{
             dispatch(listProducts( keyword, pageNumber ));
@@ -80,8 +87,48 @@ import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
                 
             </section>
             {/* Hotel Facilities */}
+
+
+            
  
             </Container>
+            {/* Book now section */}
+            <section>
+                <div className='center-content' >
+                    <div className='contain-each-board' >
+                        <h4 className='banner-title' > Choose from a wide range.</h4>
+                        <button className='banner-btn' onClick={handleBookNowClick} >Book Now</button>
+                    </div>
+                </div>
+            </section>
+            {/* Book now section */}
+
+
+            {/* Our Packages */}
+            <Container>
+                <section>
+                    <h1 className='home-page-title' >Trending Packages</h1>
+
+                    { loading? <Loader />: error ? <Message>{error}</Message>
+                        : <>
+                        <div className="flex-wrap" >
+                            {products.slice(0,3).map( (product)=>{
+                                return <Col key={product._id} >
+                                <EachPackage product={product} />
+                                </Col>
+                            } )}
+                        </div>
+                    </>}
+
+                    <div className="center-content" >
+                        <button className='more-room-btn' >
+                            View All packages
+
+                        </button>
+                    </div>
+                </section>
+            </Container>
+            {/* Our Packages */}
         
             
         </div>

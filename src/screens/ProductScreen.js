@@ -33,15 +33,28 @@ const ProductScreen = ({ history,match }) =>{
     }
 
 
-    return <Container> 
-    <div>
-        <Link className="btn btn-light my-3" to="/" >Go back</Link>
+    return   <div>
         { loading? <Loader /> :error ? <Message variant="danger" >{error}</Message> 
         :<>
         <Meta title={product.name} /> 
+        {/* Book now section */}
+                <section>
+            <div className='center-content' >
+                <div className='contain-each-board' style={{ backgroundImage:"url(/images/bg3.jpg)"}}  >
+                    <h4 className='banner-title' > luxury rooms.</h4>
+                    {/* <button className='banner-btn' onClick={handleBookNowClick} >Book Now</button> */}
+                </div>
+            </div>
+        </section>
+        {/* Book now section */}
+
+
+        <Container>
+        <Link className="btn btn-light my-3" to="/" >Go back</Link>
         <Row>
             <Col md={6} >
              {product.image ? <Image fluid src={product.image} alt={product.name} /> : null}
+             {/* {product.image ? <image src={product.image} alt={product.name} className="product-image" /> : null} */}
             </Col>
             <Col md={3} >
                 <ListGroup variant="flush" >
@@ -112,9 +125,9 @@ const ProductScreen = ({ history,match }) =>{
                 </Card>
             </Col>
         </Row>
+        </Container>
         </>}
     </div>
-    </Container>
 }
 
 export default ProductScreen;

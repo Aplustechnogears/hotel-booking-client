@@ -30,7 +30,7 @@ const RoomsScreen = ({  match }) => {
     return <>
 
         {/* Book now section */}
-            <RoomSearchWithBackground />
+            <RoomSearchWithBackground image="url('/images/bg2.jpeg')" />
         {/* Book now section */}
 
 

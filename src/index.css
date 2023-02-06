@@ -1,8 +1,9 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Jost', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,6 +27,51 @@ h1{
 .rating span{
   margin:1px;
 }
+
+.large-text{
+  color: #0a0a0a;
+  letter-spacing: 3px;
+  font-size: 34px;
+  font-weight: 400;
+  padding-left: 1rem;
+}
+
+.margin1rem{
+  margin: 2rem 2rem 2rem 0;
+}
+/* media query this styles */
+.divide-into-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 6rem 0;
+}
+
+
+.half-radius-image{
+  width: 30vw;
+  border-radius: 40px 0 40px 0;
+}
+
+.star-number{
+  font-size: 55px;
+  color: #0a0a0a;
+}
+
+.star-small-number{
+  font-size: 22px;
+  color: #0a0a0a;
+  font-weight: 400;
+  align-self: center;
+  padding-top: 1rem;
+}
+
+.flex{
+  display: flex;
+}
+
+/* media query this styles */
+
+
 .verify-btn{
   display: flex;
   justify-content: center;
@@ -44,7 +90,9 @@ img{
 .footer-dark {
   padding:50px 0;
   color:#f0f9ff;
-  background-color:#1c1c1c;
+  background-color:#000000;
+  margin:2rem;
+  border-radius:20px;
 }
 
 .footer-dark h3 {
@@ -67,6 +115,8 @@ img{
   color:inherit;
   text-decoration:none;
   opacity:1;
+  /* font-size: 16px; */
+  /* font-weight: 400; */
 
 }
 
@@ -75,6 +125,16 @@ img{
 }
 
 @media (max-width:767px) {
+
+  .divide-into-2{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .half-radius-image{
+    width: 80vw;
+  }
+
   .footer-dark .item:not(.social) {
     text-align:center;
     padding-bottom:20px;
@@ -209,6 +269,22 @@ img{
   .flex-wrap{
     grid-template-columns: 1fr ;
   }
+
+
+  .home-facilities-section{
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .home-facility-image{
+    width: 80vw !important;
+  }
+
+  .home-facility-texts-container{
+    margin-top: 2rem !important;
+  }
+
+
     
 }
 
@@ -264,7 +340,13 @@ img{
 .center-content{
   display: flex;
   justify-content: center;
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 2rem 0;
+}
+
+.sub-heading-text{
+  color: #898989;
+  font-size: 21px;
+  padding: 1rem;
 }
 
 .more-room-btn{
@@ -287,8 +369,26 @@ img{
   padding-left: 10px;
 }
 
+.social-icon{
+  align-self: center;
+  font-size: 20px;
+  padding-left: 2px;
+}
+
 .each-facility-image{
   font-size: 64px;
+  color: #656565;
+}
+
+.home-facilities-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 3rem 0 6rem 0;
+}
+
+.home-facility-image{
+  width: 35vw;
+  border-radius: 20px;
 }
 
 .each-facility-name{
@@ -297,6 +397,7 @@ img{
   text-transform: capitalize;
   text-align: center;
   margin: 1rem;
+  color: #000000;
 }
 
 .contain-facility{
@@ -324,12 +425,30 @@ img{
   justify-content: center;
 }
 
+.home-facility-texts-container{
+  margin-left:2rem ;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-facility-text-para{
+  color: #898989;
+  font-size: 18px;
+
+}
+.home-facility-text-header{
+  color: #000000;
+  font-size: 30px;
+  margin-bottom: 1rem;
+  
+}
 
 /* other page styles */
 
 .contain-each-board{
   background-image: url('/images/bg1.jpeg') ;
-  height: 70vh;
+  height: 85vh;
   width: 95vw;
   opacity: 0.95;
   display: flex;

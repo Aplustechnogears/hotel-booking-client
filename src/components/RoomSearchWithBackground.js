@@ -16,7 +16,7 @@ const RoomSearchWithBackground = ({ image="url('/images/bg1.jpeg')" }) => {
     return <section>
     <div className='center-content' >
         <div className='contain-each-board' style={{ backgroundImage: image }} >
-            <h4 className='banner-title home-page-title' style={{ fontSize:"6rem" }} > Search.</h4>
+            <h4 className='banner-title home-page-title' style={{ fontSize:"70px", fontWeight:'400' }} > Book your vacation.</h4>
 
             {/* All Search Criteria  */}
             <div className="all-filter-container" >

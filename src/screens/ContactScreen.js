@@ -7,6 +7,7 @@ import axios from 'axios';
 import { emailValidation } from '../utils/helpers';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const HOTEL_FACILITIES = [
     { image: "fa fa-facebook", text: "Facebook" },
@@ -60,7 +61,9 @@ const ContactScreen = () => {
 
     return <div className='container1' >
         <Meta />
-        <img src='/images/bg1.jpeg' alt="" className='carousel-image' />
+        <RoomSearchWithBackground image="url('/images/bg1.jpeg')" />
+
+        {/* <img src='/images/bg1.jpeg' alt="" className='carousel-image' /> */}
         {/* <DarkVariantCarousel /> */}
 
         <Container>

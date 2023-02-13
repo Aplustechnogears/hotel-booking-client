@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from './Header'
 
 
 const RoomSearchWithBackground = ({ image="url('/images/bg1.jpeg')" }) => {
@@ -16,7 +17,11 @@ const RoomSearchWithBackground = ({ image="url('/images/bg1.jpeg')" }) => {
     return <section>
     <div className='center-content' >
         <div className='contain-each-board' style={{ backgroundImage: image }} >
-            <h4 className='banner-title home-page-title' style={{ fontSize:"70px", fontWeight:'400' }} > Book your vacation.</h4>
+            <Header />
+            <div>
+                <h4 className='banner-title home-page-title' style={{ fontSize:"70px", fontWeight:'400' }} > Book your vacation.</h4>
+            </div>
+            <div>
 
             {/* All Search Criteria  */}
             <div className="all-filter-container" >
@@ -39,12 +44,17 @@ const RoomSearchWithBackground = ({ image="url('/images/bg1.jpeg')" }) => {
                 </div>
 
                 {/* category */}
-            </div>
-                <div className='center-content' >
-                    <button className='banner-btn' onClick={ handleSeach } >Search Room</button>
+                <div >
+                    <button className='banner-btn1' onClick={ handleSeach } >Search Room</button>
                 </div>
+                
+            </div>    
+                  
+               
 
             {/* <button className='banner-btn' onClick={handleBookNowClick} >Book Now</button> */}
+            </div>
+
         </div>
     </div>
 </section>

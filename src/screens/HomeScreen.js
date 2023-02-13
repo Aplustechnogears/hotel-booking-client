@@ -47,7 +47,6 @@ import EachPackage from '../components/EachPackage';
 
         return <div className='container1' >
             <Meta  />
-            {/* <img src='/images/hero.jpg' alt="" className='hero-image' /> */}
             <RoomSearchWithBackground image="url('/images/bg3.jpeg')" />
 
             <Container>
@@ -122,7 +121,7 @@ import EachPackage from '../components/EachPackage';
             {/* Book now section */}
             <section>
                 <div className='center-content' >
-                    <div className='contain-each-board' >
+                    <div className='contain-each-board1' >
                         <h4 className='banner-title' > Choose from a wide range.</h4>
                         <button className='banner-btn' onClick={handleBookNowClick} >Book Now</button>
                     </div>
@@ -141,7 +140,7 @@ import EachPackage from '../components/EachPackage';
                     
                     <div className="home-facilities-section" >
                         <div className='flex-justify-center' >
-                            <img src="/images/chef.jpeg" className='home-facility-image' />
+                            <img src="/images/chef.jpeg" className='home-facility-image' alt="" />
                         </div>
                         <div className='home-facility-texts-container' >
                             <h4 className='home-facility-text-header' >3 Michelin Stars Restaurant, Vézère</h4>
@@ -156,14 +155,14 @@ import EachPackage from '../components/EachPackage';
                             <p className='home-facility-text-para' > A brasserie inspired by French cuisine, a fresh and modern place to visit and enjoy dishes always handmade of the best ingredients of the season.</p>
                         </div>
                         <div className='flex-justify-center' >
-                            <img src="/images/chef.jpeg" className='home-facility-image' />
+                            <img src="/images/chef.jpeg" className='home-facility-image' alt="" />
                         </div>
 
                     </div>
 
                     <div className="home-facilities-section" >
                         <div className='flex-justify-center' >
-                            <img src="/images/chef.jpeg" className='home-facility-image' />
+                            <img src="/images/chef.jpeg" className='home-facility-image' alt="" />
                         </div>
                         <div className='home-facility-texts-container' >
                             <h4 className='home-facility-text-header' >3 Michelin Stars Restaurant, Vézère</h4>

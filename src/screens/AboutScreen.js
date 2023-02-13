@@ -5,6 +5,7 @@ import EachHotelFacility from '../components/EachhotelFacility';
 import { Container } from 'react-bootstrap';
 import EachFounder from '../components/EachFounder';
 import { useHistory } from 'react-router-dom';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
     const HOTEL_FACILITIES = [
@@ -34,7 +35,9 @@ import { useHistory } from 'react-router-dom';
 
         return <div className='container1' >
             <Meta  />
-            <img src='/images/bg1.jpeg' alt="" className='carousel-image' />
+            {/* <img src='/images/bg1.jpeg' alt="" className='carousel-image' /> */}
+            <RoomSearchWithBackground  image="url('/images/bg1.jpeg')" />
+            
             {/* <DarkVariantCarousel /> */}
 
             <Container>

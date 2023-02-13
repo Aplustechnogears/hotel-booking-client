@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './components/Header';
+// import Header from './components/Header';
 import Footer from './components/Footer';
 // import { Container } from 'react-bootstrap';
 import HomeScreen from './screens/HomeScreen';
@@ -28,7 +28,7 @@ import RoomsScreen from './screens/RoomsScreen';
 function App() {
   return (
     <Router>
-    <Header />
+    {/* <Header /> */}
     <main >
       {/* <Container> */}
         <Route path="/order/:id" component={OrderScreen} />

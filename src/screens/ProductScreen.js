@@ -1,16 +1,18 @@
-import React,{ useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
-import {useDispatch, useSelector} from 'react-redux';
-import {Row, Col, Card, Button, Image, ListGroup, Form, Container} from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Row, Col, Card, Button, Image, ListGroup, Form, Container } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import { listProductDetails } from '../actions/productActions';
+import { listProductDetails, listProducts } from '../actions/productActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
+import Product from '../components/Product';
 
 
 
-const ProductScreen = ({ history,match }) =>{
+const ProductScreen = ({ history, match }) => {
 
     const [qty, setQty] = useState(1);
 
@@ -18,115 +20,102 @@ const ProductScreen = ({ history,match }) =>{
 
     const dispatch = useDispatch();
     const productDetails = useSelector(state => state.productDetails);
+    const productList = useSelector(state=> state.productList )
+    const { products } = productList
 
     const { error, product, loading } = productDetails;
 
-    useEffect(()=>{
-        
-        dispatch(listProductDetails(match.params.id))
+    useEffect(() => {
 
-    },[dispatch, match]);
+        dispatch(listProductDetails(match.params.id))
+        dispatch(listProducts( ));
+
+    }, [dispatch, match]);
 
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${qty}`)
     }
 
+    const handleSeach = () => { }
 
-    return   <div>
-        { loading? <Loader /> :error ? <Message variant="danger" >{error}</Message> 
-        :<>
-        <Meta title={product.name} /> 
-        {/* Book now section */}
-                <section>
-            <div className='center-content' >
-                <div className='contain-each-board' style={{ backgroundImage:"url(/images/bg3.jpg)"}}  >
-                    <h4 className='banner-title' > luxury rooms.</h4>
-                    {/* <button className='banner-btn' onClick={handleBookNowClick} >Book Now</button> */}
-                </div>
-            </div>
-        </section>
-        {/* Book now section */}
+    return <div>
+        {loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message>
+            : <>
+                <Meta title={product.name} />
+                <RoomSearchWithBackground
+                    height="75vh"
+                    showFilters={false}
+                    title="Deluxe Suite Room"
+                    image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg2.jpeg')" />
+
+                <Container>
+                    <Link className="btn btn-light my-3" to="/" >Go back</Link>
+
+                    <section className="each-room-head" >
+                        <div>
+                            <img src={product.image} alt="" className='each-room-banner' />
+                            <div className='each-room-price-container' >
+                                <h2 className='each-room-name' >{product.name}</h2>
+                                <p className='each-room-price' >From {product.price}$ Per night</p>
+                            </div>
+                            <div className='each-room-description-container' >
+                                <h5>Description</h5>
+                                <p className='each-room-description' >{product.description}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div className="all-filter-container" >
+
+                                {/* from date */}
+                                <div className='date-container' style={{ border: "1px solid #d3dae3", marginBottom: "1rem" }} >
+                                    <label className='each-filter-label' >Check In</label>
+                                    <input type="date" className='date' />
+                                </div>
+                                {/* to date */}
+                                <div className='date-container' style={{ border: "1px solid #d3dae3", marginBottom: "1rem" }} >
+                                    <label className='each-filter-label' >Check Out</label>
+                                    <input type="date" className='date' />
+                                </div>
+
+                                {/* rooms dropdown */}
+                                <div className='date-container' style={{ border: "1px solid #d3dae3", marginBottom: "1rem" }} >
+                                    <label className='each-filter-label' >Room</label>
+                                    <input type="number" className='date' placeholder='1' />
+                                </div>
+
+                                {/* category */}
+                                <div >
+                                    <button className='banner-btn2' onClick={handleSeach} >Book Room</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
 
 
-        <Container>
-        <Link className="btn btn-light my-3" to="/" >Go back</Link>
-        <Row>
-            <Col md={6} >
-             {product.image ? <Image fluid src={product.image} alt={product.name} /> : null}
-             {/* {product.image ? <image src={product.image} alt={product.name} className="product-image" /> : null} */}
-            </Col>
-            <Col md={3} >
-                <ListGroup variant="flush" >
-                    <ListGroup.Item>
-                        <h2>{product.name}</h2>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                        <Rating value={product.rating} text={product.numReviews} />
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                        Price: ${product.price}
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                        Description: ${product.description}
-                    </ListGroup.Item>
-                </ListGroup>
-            </Col>
-            <Col md={3} >
-                <Card>
-                    <ListGroup variant="flush" >
-                        <ListGroup.Item>
-                            <Row>
-                                <Col>
-                                    Price: 
-                                </Col>
-                                <Col>
-                                    <strong>${product.price}</strong>
-                                </Col>
-                            </Row>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            <Row>
-                                <Col>
-                                    Status: 
-                                </Col>
-                                <Col>
-                                {product.countInStock > 0 ? 'In Stock': 'Out of Stock'}
-                                </Col>
-                            </Row>
-                        </ListGroup.Item>
-                        { product.countInStock > 0 && ( 
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Qty</Col>
-                                    <Col>
-                                        <Form.Control as="select" value={qty} onChange={(e)=> {
-                                            setQty(e.target.value)
-                                            console.log(qty);
-                                        }  } >
-                                            
-                                            { [...Array(product.countInStock).keys() ].map(x=>{
-                                                return <option key={x+1} value={x+1} >
-                                                    {x+1}
-                                                </option>
-                                            })  }
-                                        </Form.Control>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                        )  }
+                    {/* Trending Rooms Container */}
+                    <section className='trending-rooms-container' >
+                        <h1 className='home-page-title' >More Rooms</h1>
+                        <p className='sub-heading-text' >A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of soul.</p>
+                        {loading ? <Loader /> : error ? <Message>{error}</Message>
+                            : <>
+                                <div className="flex-wrap" >
+                                    {products.slice(0, 3).map((product) => {
+                                        return <Col key={product._id} >
+                                            <Product product={product} />
+                                        </Col>
+                                    })}
+                                </div>
+                            </>}
 
-                        <ListGroup.Item>
-                            <Button onClick={addToCartHandler}  className="btn-block" type="button" disabled={product.countInStock === 0} >
-                                { product.countInStock ===0 ? "Out Of Stock" : "Add To Cart" }
-                            </Button>
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Card>
-            </Col>
-        </Row>
-        </Container>
-        </>}
+                        <div className="center-content" >
+                        </div>
+                    </section>
+                    {/* Trending Rooms Container */}
+                </Container>
+
+            </>}
     </div>
 }
 

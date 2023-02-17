@@ -20,13 +20,13 @@ const Header = () =>{
         <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect >
         <Container>
             <LinkContainer to="/" >
-                <Navbar.Brand> Hotel </Navbar.Brand>
+                <Navbar.Brand> Ganga Radisson </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
                 <LinkContainer to="/cart" >
-                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> Cart</Nav.Link>
+                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> Reservations</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/about"  >
                     <Nav.Link style={{color:'red'}} > <i className="fa fa-shopping-cart" ></i> About</Nav.Link>

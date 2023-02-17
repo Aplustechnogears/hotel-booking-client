@@ -61,7 +61,10 @@ const ContactScreen = () => {
 
     return <div className='container1' >
         <Meta />
-        <RoomSearchWithBackground image="url('/images/bg1.jpeg')" />
+        <RoomSearchWithBackground 
+        showFilters={false}
+        title="Contact Us"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" />
 
         {/* <img src='/images/bg1.jpeg' alt="" className='carousel-image' /> */}
         {/* <DarkVariantCarousel /> */}

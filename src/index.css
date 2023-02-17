@@ -349,7 +349,13 @@ img{
 .center-content{
   display: flex;
   justify-content: center;
-  margin: 2rem 0 2rem 0;
+  margin: 1rem;
+}
+
+.center-content1{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }
 
 .sub-heading-text{
@@ -457,13 +463,26 @@ img{
 
 .contain-each-board{
   background-image: url('/images/bg1.jpeg') ;
-  height: 95vh;
+  height: 97vh;
   overflow: auto;
-  width: 95vw;
+  width: 100vw;
   /* opacity: 0.95; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 20px;
+  background-size: cover ;
+}
+
+.contain-each-board-small{
+  background-image: linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)), url('/images/bg1.jpeg') ;
+  height: 60vh;
+  overflow: auto;
+  width: 100vw;
+  /* opacity: 0.95; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 20px;
   background-size: cover ;
 }
@@ -508,6 +527,22 @@ img{
   width: 14rem;
   margin-left: 1rem;
   height: 6rem;
+}
+
+.banner-btn2{
+  background-color: transparent;
+  color: #0c0c0c;
+  width: 10rem;
+  border: 2px solid #0c0c0c;
+  border-radius: 4px;
+  font-size: 1rem;
+  align-self: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 200ms;
+  height: 100%;
+  width: 14rem;
+  height: 5rem;
 }
 
 .form-container{
@@ -598,4 +633,40 @@ img{
     height: 5.2rem;
     margin-left: 0;
   }
+}
+
+.each-room-head{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding-top: 2rem;
+}
+
+.each-room-banner{
+  width: 100%;
+  height: 50vh;
+  border-radius: 20px;
+}
+
+.each-room-price-container{
+  padding: 4rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.each-room-name{
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 34px;
+}
+
+.each-room-price{
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 22px;
+
+}
+
+.each-room-description{
+  color: #656565;
+  font-size: 18px;
 }

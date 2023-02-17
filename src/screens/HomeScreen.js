@@ -47,7 +47,7 @@ import EachPackage from '../components/EachPackage';
 
         return <div className='container1' >
             <Meta  />
-            <RoomSearchWithBackground image="url('/images/bg3.jpeg')" />
+            <RoomSearchWithBackground image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg3.jpeg')" />
 
             <Container>
             {/* rooms section 1 */}
@@ -151,21 +151,21 @@ import EachPackage from '../components/EachPackage';
 
                     <div className="home-facilities-section"  >
                         <div className='home-facility-texts-container' >
-                            <h4 className='home-facility-text-header' >3 Michelin Stars Restaurant, Vézère</h4>
+                            <h4 className='home-facility-text-header' >The Penthouse Bar, An iconic american bar</h4>
                             <p className='home-facility-text-para' > A brasserie inspired by French cuisine, a fresh and modern place to visit and enjoy dishes always handmade of the best ingredients of the season.</p>
                         </div>
                         <div className='flex-justify-center' >
-                            <img src="/images/chef.jpeg" className='home-facility-image' alt="" />
+                            <img src="/images/hero.jpg" className='home-facility-image' alt="" />
                         </div>
 
                     </div>
 
                     <div className="home-facilities-section" >
                         <div className='flex-justify-center' >
-                            <img src="/images/chef.jpeg" className='home-facility-image' alt="" />
+                            <img src="/images/bg4.jpeg" className='home-facility-image' alt="" />
                         </div>
                         <div className='home-facility-texts-container' >
-                            <h4 className='home-facility-text-header' >3 Michelin Stars Restaurant, Vézère</h4>
+                            <h4 className='home-facility-text-header' >The Spa. Refresh Yourself</h4>
                             <p className='home-facility-text-para' > A brasserie inspired by French cuisine, a fresh and modern place to visit and enjoy dishes always handmade of the best ingredients of the season.</p>
                         </div>
                     </div>

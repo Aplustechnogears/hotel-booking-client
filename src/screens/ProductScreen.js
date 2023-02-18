@@ -37,6 +37,17 @@ const ProductScreen = ({ history, match }) => {
         history.push(`/cart/${match.params.id}?qty=${qty}`)
     }
 
+    const HOTEL_AMENETIES = [
+        { icon: 'fa fa-television', text:'TV' },
+        { icon: 'fa fa-wifi', text:'Free Wifi' },
+        { icon: 'fa fa-archive', text:'Safe' },
+        { icon: 'fa fa-shower', text:'Air Conditioning' },
+        { icon: 'fa fa-facebook', text:'Facebook' },
+        { icon: 'fa fa-fire', text:'Heater' },
+        { icon: 'fa fa-phone', text:'Unlimited Phone' },
+        { icon: 'fa fa-deaf', text:'Dryer' },
+    ]
+
     const handleSeach = () => { }
 
     return <div>
@@ -63,8 +74,25 @@ const ProductScreen = ({ history, match }) => {
                                 <h5>Description</h5>
                                 <p className='each-room-description' >{product.description}</p>
                             </div>
+
+                            {/* Hotel Amenities */}
+
+                            <section style={{marginTop:"5rem"}} >
+                            <h5 className='each-roomtitle' >Hotel Ameneties</h5>
+                            <div className='each-room-amaneties'>
+                                {HOTEL_AMENETIES.map((item, i)=>{
+                                    return <div key={ i } className="each-amanity" >
+                                        <i className={`${item.icon} icon`} ></i>
+                                        <p className='each-room-description' style={{marginLeft:'2rem', fontWeight:'500'}} >{item.text}</p>
+                                    </div>
+                                }) }
+
+                            </div>
+                            </section>
+                            {/* Hotel Amenities */}
                         </div>
                         <div>
+                            <h5 className='each-roomtitle' style={{textAlign:"center"}} > Book Your Room</h5>
                             <div className="all-filter-container" >
 
                                 {/* from date */}

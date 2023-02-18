@@ -293,7 +293,25 @@ img{
     margin-top: 2rem !important;
   }
 
+  .each-room-head{
+    display: flex !important;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .each-room-amaneties{
+    justify-content: center;
+  }
 
+  .each-roomtitle{
+    text-align: center;
+    text-decoration: underline;
+    padding-top: 2rem;
+  }
+
+  .each-amanity{
+    margin:0 !important;
+    margin-bottom: 2rem !important;
+  }
     
 }
 
@@ -669,4 +687,28 @@ img{
 .each-room-description{
   color: #656565;
   font-size: 18px;
+  margin: auto 0
+}
+
+.each-amanity{
+  display: flex;
+  min-width: 245px;
+  padding: 1.2rem 1rem;
+  border: 1px solid #d3dae3;
+  border-radius: 20px;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: 100ms ease-in-out;
+}
+
+.each-amanity:hover{
+  border: none;
+  box-shadow:0px 0px 20px rgb(0 0 0 / 10%) ;
+}
+
+.each-room-amaneties{
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
 }

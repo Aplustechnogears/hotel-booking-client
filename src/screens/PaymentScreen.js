@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { savePaymentMethod } from '../actions/cartActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const PaymentScreen = ({ history }) => {
 
@@ -27,14 +28,21 @@ const PaymentScreen = ({ history }) => {
         history.push('/placeorder');
     }
 
-    return <FormContainer>
+    return <>
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="Reservations"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+    <FormContainer>
         <CheckoutSteps step1 step2 step3 />
         <h1>Payment Method </h1>
         <Form onSubmit={ submitHandler } >
             <Form.Group>
                 <Form.Label as="legend" >Select payment method</Form.Label>
                 <Col>
-                    <Form.Check type="radio" label="PayPal" name="paymentMethod" value="PayPal" checked id="PayPal"
+                    <Form.Check type="radio" label="Paytm" name="paymentMethod" value="PayPal" checked id="PayPal"
                     onChange={(e)=> setPaymentMethod(e.target.value) } >
                     </Form.Check>
                     
@@ -44,6 +52,7 @@ const PaymentScreen = ({ history }) => {
             <Button variant="primary" onClick={submitHandler} > Continue </Button>
         </Form>
     </FormContainer>
+    </>
 }
 
 export default PaymentScreen

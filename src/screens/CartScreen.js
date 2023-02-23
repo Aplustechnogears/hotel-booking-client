@@ -4,6 +4,7 @@ import Message from '../components/Message';
 import { Link} from 'react-router-dom';
 import { Row, Col, Form, ListGroup, Card, Image, Button, Container } from 'react-bootstrap';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const CartScreen = ({ match , location, history }) =>{
 
@@ -33,10 +34,19 @@ const CartScreen = ({ match , location, history }) =>{
         history.push('/login?redirect=shipping')
     }
 
-    return <Container>
+    return <>
+
+    <RoomSearchWithBackground 
+        showFilters={false}
+        title="Reservations"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+    <Container>
+
      <Row>
         <Col md={8} >
-            <h1>Cart</h1>
+            <h1>Confirm Reservations</h1>
             { cartItems.length===0 ? <Message>cart is empty<Link to="/" > Go Back</Link></Message> : <ListGroup variant="flush" >
                 { cartItems.map(item=> {
                     return <ListGroup.Item key={item.product} >
@@ -47,8 +57,8 @@ const CartScreen = ({ match , location, history }) =>{
                             <Col md={3} >
                                 <Link to={`/product/${item.product}`} > {item.name} </Link>
                             </Col>
-                            <Col md={2} >
-                                ${item.price}
+                            <Col md={2} style={{whiteSpace:"nowrap"}} >
+                                ${item.price} Per Night
                             </Col>
                             <Col md={2} >
                                 <Form.Control as="select" value={item.qty} onChange={(e)=> {
@@ -88,6 +98,8 @@ const CartScreen = ({ match , location, history }) =>{
         
     </Row>
     </Container>
+
+    </>
 }
 
 export default CartScreen;

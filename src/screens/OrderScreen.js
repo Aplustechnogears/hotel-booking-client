@@ -1,5 +1,5 @@
 import React,{ useEffect , useState} from 'react';
-import {Row, Col, ListGroup, Image, Card, Button} from 'react-bootstrap';
+import {Row, Col, ListGroup, Image, Card, Button, Container} from 'react-bootstrap';
 import { PayPalButton } from 'react-paypal-button-v2';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getOrderDetails , payOrder, deliverOrder } from '../actions/orderActions';
 import { ORDER_PAY_RESET , ORDER_DELIVER_RESET} from '../constants/orderConstants'
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const OrderScreen = ({ match, history }) => {
 
@@ -68,7 +69,7 @@ const OrderScreen = ({ match, history }) => {
 
         verifyHandler();
 
-        const checkPayment =  () =>{
+        (async () => {  
             axios.get(`https://hotel-server-nbih.onrender.com/api/payment/paytm/${orderId}`).then((resp)=>{
                 if(resp.data.length){
                     if(!order.isPaid){
@@ -80,10 +81,7 @@ const OrderScreen = ({ match, history }) => {
                 console.log('error in fetch',err.message);
             })
 
-        }
-        if(order && !order.isPaid){
-            checkPayment();
-        }
+        })()
 
         if(!order || successPay || successDeliver ){
             dispatch({ type: ORDER_PAY_RESET })
@@ -111,21 +109,21 @@ const OrderScreen = ({ match, history }) => {
         dispatch( payOrder(orderId, paymentResult) )
     }
 
-    // const PaytmHandler =  (e) => {
-    //     e.preventDefault();
-    //     const data = {
-    //         amount:parseInt(order.totalPrice),
-    //         orderId: orderId,
-    //         userId: userInfo._id
-    //     }
-    //     axios.post('https://e-commerce1-payment.herokuapp.com/payment',data).then((res)=>{
-    //         console.log('post done', res);
-    //     }).catch((err)=>{
-    //         console.log('post not done', err.message);
-    //     })
-    // }
+    const handlePaytmPayment = () =>{
+        const serverHost = 'https://hotel-booking-payment.onrender.com';
+        const paytmUrl = `${serverHost}/payment?orderId=${orderId}&userId=${userInfo._id}&amount=${order.totalPrice}`
+        window.location.href= paytmUrl;
+    }
 
-    return loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message> : <>
+    return loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message> : 
+    <>
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="Reservations"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+    <Container>
     <h1>Order {order._id}</h1>
     <Row> 
             <Col md={8} >
@@ -138,17 +136,15 @@ const OrderScreen = ({ match, history }) => {
                             <strong> Address: </strong>
                             {`${order.shippingAddress.address} ${order.shippingAddress.city} ${order.shippingAddress.postalCode} ${order.shippingAddress.country}`}
                         </p>
-                        { order.isDelivered ? <Message variant="success" > Delivered at {order.deliveredAt} </Message> :
-                        <Message variant="danger" >
-                            Not Delivered
-                        </Message> }
+                        { order.isDelivered ? <Message variant="success" > Delivered at {order.deliveredAt} </Message> : null
+                         }
                     </ListGroup.Item>
 s
                     <ListGroup.Item>
-                        <h2>Payment Method</h2>
-                        <p> 
+                        <h2>Payment Status</h2>
+                        {/* <p> 
                             <strong>Method: </strong> {order.paymentMethod}
-                        </p>
+                        </p> */}
                         { order.isPaid ? <Message variant="success" > Paid at {order.paidAt} </Message> :
                         <Message variant="danger" >
                             Not Paid
@@ -156,7 +152,7 @@ s
                     </ListGroup.Item>
 
                     <ListGroup.Item>
-                        <h2>Order items</h2>
+                        <h2>Reservations</h2>
                         { order.orderItems.length===0 ? <Message variant="danger" >Order is Empty</Message>
                         : <ListGroup variant="flush" >
                             { order.orderItems.map((item, index)=>{
@@ -217,27 +213,27 @@ s
                             { loadingPay ? <Loader /> : null}
                             { verifyLoader ? <Loader /> : !emailVerify ?
                              <Link to="/verifyAccount" ><Button variant="dark" >Let's Verify Email First</Button></Link>
-                              :  !sdkReady ? <Loader /> 
-                              : <div>
-                                  <PayPalButton  amount={ parseInt( order.totalPrice )} onSuccess={successPaymentHandler} />
+                              :   <div>
+                                  {/* <PayPalButton  amount={ parseInt( order.totalPrice )} onSuccess={successPaymentHandler} /> */}
                                   <div>
-                                      <form action="https://e-commerce1-payment.herokuapp.com/payment" method="POST" >
-                                          <input type="hidden" name="amount" value={ parseInt( order.totalPrice )} />
-                                          <input type="hidden" name="orderId" value={orderId} />
-                                          <input type="hidden" name="userId" value={userInfo._id} />
-                                          <Button variant="info" type="submit" >Pay with Paytm</Button>
-                                      </form>
+                                      {/* <form action="localhost:5000/payment" method="POST" > */}
+                                          {/* <input type="hidden" name="amount" value={ parseInt( order.totalPrice )} /> */}
+                                          {/* <input type="hidden" name="orderId" value={orderId} /> */}
+                                          {/* <input type="hidden" name="userId" value={userInfo._id} /> */}
+                                          <button className='paytm-button' onClick={ handlePaytmPayment } >Pay with Paytm</button>
+                                      {/* </form> */}
                                   </div>
                                 </div> } 
                         </ListGroup.Item> : null }
                         { loadingDeliver ? <Loader /> : null }
                         { ( userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered) ? <ListGroup.Item>
-                            <Button type="button" className='btn btn-block' onClick={deliverHandler} > Mark as Delivered </Button>
+                            {/* <Button type="button" className='btn btn-block' onClick={deliverHandler} > Mark as Delivered </Button> */}
                         </ListGroup.Item>:null }
                     </ListGroup>
                 </Card>
             </Col>
-        </Row>
+    </Row>
+    </Container>
     </>
 }
 

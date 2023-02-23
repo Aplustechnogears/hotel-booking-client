@@ -38,7 +38,9 @@ const AboutScreen = ({ match }) => {
         {/* <img src='/images/bg1.jpeg' alt="" className='carousel-image' /> */}
         <RoomSearchWithBackground
             showFilters={false}
-            title='About Us' image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg2.jpeg')" />
+            title='About Us' 
+            image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg2.jpeg')"
+        />
 
         {/* <DarkVariantCarousel /> */}
 

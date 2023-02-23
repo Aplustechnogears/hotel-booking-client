@@ -1,10 +1,11 @@
 import React,{ useEffect } from 'react';
-import {   Button , Row, Col, ListGroup, Image, Card} from 'react-bootstrap';
+import {   Button , Row, Col, ListGroup, Image, Card, Container} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const PlaceOrderScreen = ({ history }) => {
 
@@ -51,6 +52,13 @@ const PlaceOrderScreen = ({ history }) => {
     }
 
     return <div>
+        <RoomSearchWithBackground
+            showFilters={false}
+            title="Reservations"
+            image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+            height="50vh"
+        />
+        <Container>
         <CheckoutSteps step1 step2 step3 step4  />
         <Row>
             <Col md={8} >
@@ -143,6 +151,8 @@ const PlaceOrderScreen = ({ history }) => {
                 </Card>
             </Col>
         </Row>
+
+        </Container>
     </div>
 }
 

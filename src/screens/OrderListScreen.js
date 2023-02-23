@@ -1,10 +1,11 @@
 import React,{  useEffect } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { LinkContainer } from 'react-router-bootstrap';
 import { listOrders } from '../actions/orderActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const OrderListScreen = ({ history }) => {
 
@@ -27,6 +28,15 @@ const OrderListScreen = ({ history }) => {
 
 
     return <div>
+
+        <RoomSearchWithBackground
+            showFilters={false}
+            title="Recent Orders"
+            image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+            height="50vh"
+        />
+
+        <Container>
         <h1>Orders </h1>
         { loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message>
         : <Table responsive hovered striped bordered className="table-sm" >
@@ -59,6 +69,8 @@ const OrderListScreen = ({ history }) => {
                 }) }
             </tbody>
         </Table> }
+
+        </Container>
     </div>
 }
 

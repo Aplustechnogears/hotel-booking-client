@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { saveShippingAddress } from '../actions/cartActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const ShippingScreen = ({ history }) => {
 
@@ -24,7 +25,14 @@ const ShippingScreen = ({ history }) => {
         history.push('/payment');
     }
 
-    return <FormContainer>
+    return <>
+        <RoomSearchWithBackground
+            showFilters={false}
+            title="Reservations"
+            image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+            height="50vh"
+        />
+        <FormContainer>
         <CheckoutSteps step1 step2 />
         <h1>Shipping </h1>
         <Form onSubmit={ submitHandler } >
@@ -59,6 +67,7 @@ const ShippingScreen = ({ history }) => {
             <Button variant="primary" onClick={submitHandler} > Continue </Button>
         </Form>
     </FormContainer>
+    </>
 }
 
 export default ShippingScreen

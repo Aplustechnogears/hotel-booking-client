@@ -712,3 +712,14 @@ img{
   display: flex;
   flex-wrap: wrap;
 }
+
+.paytm-button{
+  background:#00b1e5;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 8px;
+}

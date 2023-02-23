@@ -21,9 +21,9 @@ const ProductScreen = ({ history, match }) => {
     const dispatch = useDispatch();
     const productDetails = useSelector(state => state.productDetails);
     const productList = useSelector(state=> state.productList )
-    const { products } = productList
-
+    const { products } = productList;
     const { error, product, loading } = productDetails;
+    const [roomsCount, setRoomsCount] = useState(0)
 
     useEffect(() => {
 
@@ -31,11 +31,6 @@ const ProductScreen = ({ history, match }) => {
         dispatch(listProducts( ));
 
     }, [dispatch, match]);
-
-
-    const addToCartHandler = () => {
-        history.push(`/cart/${match.params.id}?qty=${qty}`)
-    }
 
     const HOTEL_AMENETIES = [
         { icon: 'fa fa-television', text:'TV' },
@@ -48,7 +43,11 @@ const ProductScreen = ({ history, match }) => {
         { icon: 'fa fa-deaf', text:'Dryer' },
     ]
 
-    const handleSeach = () => { }
+    const handleBookRoom = () => {
+        if( parseInt(roomsCount)>=1){
+            history.push(`/cart/${match.params.id}?qty=${roomsCount}`)
+        }
+     }
 
     return <div>
         {loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message>
@@ -109,12 +108,12 @@ const ProductScreen = ({ history, match }) => {
                                 {/* rooms dropdown */}
                                 <div className='date-container' style={{ border: "1px solid #d3dae3", marginBottom: "1rem" }} >
                                     <label className='each-filter-label' >Room</label>
-                                    <input type="number" className='date' placeholder='1' />
+                                    <input type="number" className='date' placeholder='1' value={roomsCount} onChange={e=> setRoomsCount(e.target.value)} />
                                 </div>
 
                                 {/* category */}
                                 <div >
-                                    <button className='banner-btn2' onClick={handleSeach} >Book Room</button>
+                                    <button className='banner-btn2' onClick={handleBookRoom} >Book Room</button>
                                 </div>
 
                             </div>

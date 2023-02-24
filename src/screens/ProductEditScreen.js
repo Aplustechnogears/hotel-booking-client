@@ -8,6 +8,7 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 import FormContainer from '../components/FormContainer';
 import {listProductDetails, updateProduct} from '../actions/productActions';
 import firebase from '../firebase';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
 const ProductEditScreen = ({ match, history }) => {
@@ -89,7 +90,15 @@ const ProductEditScreen = ({ match, history }) => {
         }
     
 
-    return <Container> 
+    return <>
+    
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="Fill Room Details"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+    <Container> 
     <div>
         <Link to='/admin/productlist' className="btn btn-light my-3" >
             Go Back
@@ -147,6 +156,8 @@ const ProductEditScreen = ({ match, history }) => {
 
     </div>
     </Container>
+    </> 
+
 }
 
 export default ProductEditScreen;

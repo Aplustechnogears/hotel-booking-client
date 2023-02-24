@@ -6,6 +6,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { login } from '../actions/userActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
 const LoginScreen = ({ location, history }) => {
@@ -31,7 +32,14 @@ const LoginScreen = ({ location, history }) => {
         dispatch(login(email, password))
     }
 
-    return <Container> 
+    return  <>
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="Sign In"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+    <Container> 
     <FormContainer>
         <h1>Sign In </h1>
         { error ? <Message variant="danger" > {error} </Message>: null }
@@ -64,6 +72,8 @@ const LoginScreen = ({ location, history }) => {
         </Row>
     </FormContainer>
     </Container>
+    </>
+
 }
 
 export default LoginScreen;

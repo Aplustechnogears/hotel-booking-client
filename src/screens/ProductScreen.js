@@ -4,8 +4,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Card, Button, Image, ListGroup, Form, Container } from 'react-bootstrap';
-import Rating from '../components/Rating';
+import { Col,Container } from 'react-bootstrap';
 import { listProductDetails, listProducts } from '../actions/productActions';
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 import Product from '../components/Product';
@@ -13,10 +12,6 @@ import Product from '../components/Product';
 
 
 const ProductScreen = ({ history, match }) => {
-
-    const [qty, setQty] = useState(1);
-
-
 
     const dispatch = useDispatch();
     const productDetails = useSelector(state => state.productDetails);
@@ -118,7 +113,7 @@ const ProductScreen = ({ history, match }) => {
 
                             </div>
                         </div>
-                    </section>
+                    </section> 
 
 
                     {/* Trending Rooms Container */}

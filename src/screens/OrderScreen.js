@@ -1,12 +1,11 @@
 import React,{ useEffect , useState} from 'react';
 import {Row, Col, ListGroup, Image, Card, Button, Container} from 'react-bootstrap';
-import { PayPalButton } from 'react-paypal-button-v2';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { getOrderDetails , payOrder, deliverOrder } from '../actions/orderActions';
+import { getOrderDetails , payOrder } from '../actions/orderActions';
 import { ORDER_PAY_RESET , ORDER_DELIVER_RESET} from '../constants/orderConstants'
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
@@ -36,7 +35,6 @@ const OrderScreen = ({ match, history }) => {
     }
 
 
-    const [sdkReady, setSdkReady] = useState(false);
     const [emailVerify, setEmailVerify] = useState(null);
     const [verifyLoader, setVerifyLoader] = useState(true);
 
@@ -45,21 +43,21 @@ const OrderScreen = ({ match, history }) => {
         if(!userInfo){
             history.push('/login');
         }
-        const addPayPalScript = async () => {
-            console.log('i am here');
-            const { data: clientId } = await axios.get('https://hotel-server-nbih.onrender.com/api/config/paypal');
-            const script = document.createElement('script');
-            script.type = "text/javascript"
-            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
-            script.async = true
-            script.onload = () => {
-                console.log('it is done as well');
-                setSdkReady(true);
-            }
+        // const addPayPalScript = async () => {
+        //     console.log('i am here');
+        //     const { data: clientId } = await axios.get('https://hotel-server-nbih.onrender.com/api/config/paypal');
+        //     const script = document.createElement('script');
+        //     script.type = "text/javascript"
+        //     script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
+        //     script.async = true
+        //     script.onload = () => {
+        //         console.log('it is done as well');
+        //         setSdkReady(true);
+        //     }
 
-            document.body.appendChild(script);
+        //     document.body.appendChild(script);
 
-        }
+        // }
 
         const verifyHandler =  async () => {
             const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/users/${userInfo._id}`);
@@ -89,25 +87,16 @@ const OrderScreen = ({ match, history }) => {
 
             dispatch( getOrderDetails( orderId ) )
         }
-        else if( !order.isPaid ){
-            if(!window.paypal){
-                addPayPalScript();
-            }else{
-                setSdkReady(true);
-            }
-        }
+        // else if( !order.isPaid ){
+        //     if(!window.paypal){
+        //         // addPayPalScript();
+        //     }else{
+        //         setSdkReady(true);
+        //     }
+        // }
 
 
     },[ dispatch, orderId, successPay, order, successDeliver, history, userInfo ]);
-
-
-    const deliverHandler = () => {
-        dispatch( deliverOrder(order) );
-    }
-
-    const successPaymentHandler = ( paymentResult ) => {
-        dispatch( payOrder(orderId, paymentResult) )
-    }
 
     const handlePaytmPayment = () =>{
         const serverHost = 'https://hotel-booking-payment.onrender.com';

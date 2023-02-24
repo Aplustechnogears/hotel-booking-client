@@ -6,6 +6,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { register } from '../actions/userActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
 
@@ -42,7 +43,15 @@ const RegisterScreen = ({ location, history }) => {
         }
     }
 
-    return <Container> <FormContainer>
+    return <>
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="Create Account"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+    <Container> 
+        <FormContainer>
         <h1>Create New Account </h1>
         { error ? <Message variant="danger" >  {error} </Message>: null }
         { message ? <Message variant="danger" >{message} </Message>: null }
@@ -89,6 +98,8 @@ const RegisterScreen = ({ location, history }) => {
         </Row>
     </FormContainer>
     </Container>
+    </>
+
 }
 
 export default RegisterScreen;

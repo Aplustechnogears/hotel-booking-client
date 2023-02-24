@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import { listProducts, deleteProduct, createProduct } from '../actions/productActions';
 import  { PRODUCT_CREATE_RESET } from '../constants/productConstants';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 const ProductListScreen = ({ history, match }) => {
 
     const pageNumber = match.params.pageNumber || 1
@@ -53,7 +54,15 @@ const ProductListScreen = ({ history, match }) => {
         dispatch( createProduct() )
     }
 
-    return <Container> 
+    return<>
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="Rooms List"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+
+     <Container> 
     <div>
         <Row className='align-items-center' >
             <Col>
@@ -101,6 +110,7 @@ const ProductListScreen = ({ history, match }) => {
         </> }
     </div>
     </Container>
+    </>
 }
 
 export default ProductListScreen;

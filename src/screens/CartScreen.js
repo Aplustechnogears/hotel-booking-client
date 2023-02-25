@@ -1,25 +1,35 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import { Link} from 'react-router-dom';
-import { Row, Col, Form, ListGroup, Card, Image, Button, Container } from 'react-bootstrap';
+import { Row, Col, ListGroup, Card, Image, Button, Container } from 'react-bootstrap';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
+import QueryString from 'qs';
+import Loader from '../components/Loader';
 
 const CartScreen = ({ match , location, history }) =>{
 
     const productId = match.params.id;
-    const qty = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch();
 
+    const urlsParsed = QueryString.parse(location.search?.slice(1,));
+    const qty = urlsParsed.qty || 1;
+    const checkInDate = parseInt( urlsParsed.checkInDate )|| 0;
+    const checkOutDate = parseInt( urlsParsed.checkOutDate )|| 0;
     const cart  = useSelector(state => state.cart);
-
     const { cartItems } = cart;
 
+    const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
         if(productId){
-            dispatch(addToCart(productId, qty));
+            (async()=>{
+                setLoading(true);
+                await dispatch(addToCart(productId, qty, checkInDate, checkOutDate));
+                setLoading(false);
+
+            })();
         }
     },[dispatch, productId, qty]);
 
@@ -30,7 +40,6 @@ const CartScreen = ({ match , location, history }) =>{
     }
 
     const checkoutHandler = () =>{
-        console.log('checkout ');
         history.push('/login?redirect=shipping')
     }
 
@@ -40,9 +49,9 @@ const CartScreen = ({ match , location, history }) =>{
         showFilters={false}
         title="Reservations"
         image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
-        height="50vh"
+        height="50vh" 
     />
-    <Container>
+    {loading ? <Loader />:  <Container>
 
      <Row>
         <Col md={8} >
@@ -54,22 +63,14 @@ const CartScreen = ({ match , location, history }) =>{
                             <Col md={2} >
                                 { item.image ? <Image src={item.image} alt={item.name} fluid rounded /> : null }
                             </Col>
-                            <Col md={3} >
+                            <Col md={3} style={{alignSelf:'center'}} >
                                 <Link to={`/product/${item.product}`} > {item.name} </Link>
                             </Col>
-                            <Col md={2} style={{whiteSpace:"nowrap"}} >
+                            <Col md={2} style={{whiteSpace:"nowrap", alignSelf:'center'}} >
                                 ${item.price} Per Night
                             </Col>
-                            <Col md={2} >
-                                <Form.Control as="select" value={item.qty} onChange={(e)=> {
-                                    dispatch(addToCart(item.product,Number(e.target.value) ))
-                                    }  } >
-                                    { [...Array(item.countInStock).keys() ].map(x=>{
-                                        return <option key={x+1} value={x+1} >
-                                            {x+1}
-                                        </option>
-                                    })  }
-                                </Form.Control>
+                            <Col md={2}  style={{alignSelf:'center'}}>
+                                <strong> {qty} Rooms</strong>
                             </Col>
                             <Col md={2} >
                                 <Button type="button" variant ='light' onClick={()=> removeFromCartHandler(item.product) } >
@@ -97,7 +98,7 @@ const CartScreen = ({ match , location, history }) =>{
         </Col>
         
     </Row>
-    </Container>
+    </Container> }
 
     </>
 }

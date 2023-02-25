@@ -19,7 +19,10 @@ const PlaceOrderScreen = ({ history }) => {
 
     //Calculate All Prices
     const cart = useSelector(state=> state.cart)
-    
+
+
+    const checkInDate = cart?.cartItems?.[0]?.checkInDate;
+    const checkOutDate = cart?.cartItems?.[0]?.checkOutDate;
     cart.itemsPrice =  floorDigit( cart.cartItems.reduce((acc, item)=> acc + item.price* item.qty ,0) );
     cart.shippingPrice = floorDigit( cart.itemsPrice > 100 ? 0 : 20 );
     cart.taxPrice = floorDigit( Number((0.18 * cart.itemsPrice).toFixed(2) ) );
@@ -37,17 +40,20 @@ const PlaceOrderScreen = ({ history }) => {
         //eslint-disable-next-line
     },[history, success]);
     
+    console.log('cart.cartItems',cart.cartItems);
+    
     const placeOrderHandler = ( ) => {
-        console.log('place Order Processing');
+
         dispatch( createOrder({ 
             orderItems: cart.cartItems,
             shippingAddress: cart.shippingAddress,
-            paymentMethod: cart.paymentMethod,
+            paymentMethod: 'paytm',
             itemsPrice: cart.itemsPrice,
-            shippingPrice: cart.shippingPrice,
-            taxPrice: cart.taxPrice,
-            totalPrice: cart.totalPrice
-
+            shippingPrice: 0,
+            taxPrice: 0,
+            totalPrice: cart.totalPrice,
+            CheckInDate: checkInDate,
+            CheckInDate: checkOutDate
          }) )
     }
 

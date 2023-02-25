@@ -18,7 +18,10 @@ const ProductScreen = ({ history, match }) => {
     const productList = useSelector(state=> state.productList )
     const { products } = productList;
     const { error, product, loading } = productDetails;
-    const [roomsCount, setRoomsCount] = useState(0)
+    const [roomsCount, setRoomsCount] = useState(0);
+    const [checkInDate, setCheckInDate] = useState("");
+    const [checkOutDate, setCheckOutDate] = useState("");
+    const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
 
@@ -39,10 +42,32 @@ const ProductScreen = ({ history, match }) => {
     ]
 
     const handleBookRoom = () => {
+        if( !(parseInt(roomsCount) >= 1) ){
+            setErrMsg("Rooms Count must be greater than 0");
+            return;
+        }
+        if( !checkInDate.length  ){
+            setErrMsg("Check In date is required!");
+            return;
+        }
+        if( !checkOutDate.length  ){
+            setErrMsg("Check Out date is required!");
+            return;
+        }
+        const checkInTimeStamp = new Date(checkInDate).getTime();
+        const checkOutTimeStamp = new Date(checkOutDate).getTime();
+        if( checkInTimeStamp>=checkOutTimeStamp ){
+            setErrMsg("Check out date must be greater than Check in date.")
+            return;
+        }
+
+        setErrMsg('');
         if( parseInt(roomsCount)>=1){
-            history.push(`/cart/${match.params.id}?qty=${roomsCount}`)
+            history.push(`/cart/${match.params.id}?qty=${roomsCount}&checkInDate=${checkInTimeStamp}&checkOutDate=${checkOutTimeStamp}`)
         }
      }
+
+     console.log('product',product);
 
     return <div>
         {loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message>
@@ -92,12 +117,12 @@ const ProductScreen = ({ history, match }) => {
                                 {/* from date */}
                                 <div className='date-container' style={{ border: "1px solid #d3dae3", marginBottom: "1rem" }} >
                                     <label className='each-filter-label' >Check In</label>
-                                    <input type="date" className='date' />
+                                    <input type="date" className='date' min={new Date().toISOString().split('T')[0]} value={ checkInDate } onChange={e=> setCheckInDate(e.target.value)} />
                                 </div>
                                 {/* to date */}
                                 <div className='date-container' style={{ border: "1px solid #d3dae3", marginBottom: "1rem" }} >
                                     <label className='each-filter-label' >Check Out</label>
-                                    <input type="date" className='date' />
+                                    <input type="date" className='date' min={new Date().toISOString().split('T')[0]} value={ checkOutDate } onChange={e=> setCheckOutDate( e.target.value )} />
                                 </div>
 
                                 {/* rooms dropdown */}
@@ -107,6 +132,11 @@ const ProductScreen = ({ history, match }) => {
                                 </div>
 
                                 {/* category */}
+                                
+                                {errMsg.length ? <div style={{padding:"0 1.6rem"}} >
+                                <Message  variant="danger"   >{errMsg}</Message> </div> : null}
+                                
+                                
                                 <div >
                                     <button className='banner-btn2' onClick={handleBookRoom} >Book Room</button>
                                 </div>
@@ -120,7 +150,7 @@ const ProductScreen = ({ history, match }) => {
                     <section className='trending-rooms-container' >
                         <h1 className='home-page-title' >More Rooms</h1>
                         <p className='sub-heading-text' >A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of soul.</p>
-                        {loading ? <Loader /> : error ? <Message>{error}</Message>
+                        {loading ? <Loader /> : error ? <Message variant="danger"  >{error}</Message>
                             : <>
                                 <div className="flex-wrap" >
                                     {products.slice(0, 3).map((product) => {

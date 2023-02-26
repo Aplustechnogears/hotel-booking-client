@@ -50,6 +50,7 @@ function App() {
         <Route path="/about" component ={AboutScreen} exact />
         <Route path="/contact" component ={ContactScreen} exact />
         <Route path="/rooms" component ={RoomsScreen} exact />
+        <Route path="/rooms/:pageNumber" component ={RoomsScreen} exact />
 
         <Route path="/" component ={HomeScreen} exact />
 

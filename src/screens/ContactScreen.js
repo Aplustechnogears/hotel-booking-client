@@ -41,7 +41,7 @@ const ContactScreen = () => {
                     }
                 }
         
-               const  response = await axios.post('http://localhost:5000/api/users/contact', { email, name, message, city }, config);        
+               const  response = await axios.post('https://hotel-server-nbih.onrender.com/api/users/contact', { email, name, message, city }, config);        
                 console.log('response',response.data.message);
                 setSuccess(response.data.message)
                 setError('');

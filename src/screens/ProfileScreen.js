@@ -1,11 +1,12 @@
 import React,{ useState, useEffect } from 'react';
-import { Row, Col, Form, Button, Table  } from 'react-bootstrap';
+import { Row, Col, Form, Button, Table, Container  } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
+import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
 const ProfileScreen = ({ location, history }) => {
@@ -46,7 +47,16 @@ const ProfileScreen = ({ location, history }) => {
         console.log('submit');
     }
 
-    return <Row>
+    return <>
+    <RoomSearchWithBackground
+        showFilters={false}
+        title="User Profile"
+        image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg1.jpeg')" 
+        height="50vh"
+    />
+
+    <Container>
+    <Row>
         <Col md={3} >
             <h1>Profile </h1>
             { error ? <Message variant="danger" >  {error} </Message>: null }
@@ -82,7 +92,6 @@ const ProfileScreen = ({ location, history }) => {
                         <th>Date</th>
                         <th>Total</th>
                         <th>Paid</th>
-                        <th>Delivered</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -93,7 +102,6 @@ const ProfileScreen = ({ location, history }) => {
                             <td>{order.createdAt.substring(0,10)  } </td>
                             <td>{order.totalPrice } </td>
                             <td>{order.isPaid ? "paid" : "not Paid" } </td>
-                            <td>{order.isDelivered ? "Delivered" : "not Delivered" } </td>
                             <td>
                                 <LinkContainer to={`/order/${order._id}`} >
                                     <Button className="btn-sm" variant="light" > More Info </Button>
@@ -105,6 +113,10 @@ const ProfileScreen = ({ location, history }) => {
             </Table> }
         </Col>
     </Row>
+
+    </Container>
+    </> 
+
 } 
 
 export default ProfileScreen;

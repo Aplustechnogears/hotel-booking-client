@@ -1,3 +1,4 @@
+import QueryString from 'qs';
 import React, { useEffect } from 'react';
 import { Col, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,19 +12,23 @@ import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 const RoomsScreen = ({  match }) => {
 
 
-    const keyword = match.params.keyword 
-    const pageNumber = match.params.pageNumber || 1
+    const keyword = match.params.keyword || ""
+    const pageNumber = match.params.pageNumber || 1;
 
     // const [products, setProducts]  = useState([]);
 
     const dispatch= useDispatch()
     const productList = useSelector(state=> state.productList )
-    const { products, error, loading } = productList
+    const { products, error, loading, pages, page } = productList;
+    const queryObj= QueryString.parse(window.location.hash?.split("?")?.[1]);
+    const roomCount = queryObj.rooms || 1;
+    const checkInDate = ( queryObj.checkInDate )|| "";
+    const checkOutDate = ( queryObj.checkOutDate )|| "";
 
     useEffect(()=>{
-        dispatch(listProducts( keyword, pageNumber ));
+        dispatch(listProducts( keyword, pageNumber, roomCount, checkInDate, checkOutDate ));
 
-    },[dispatch, keyword, pageNumber]);
+    },[dispatch, keyword, pageNumber, roomCount, checkInDate, checkOutDate]);
 
     // const handleBookNowClick = () => {}
 
@@ -50,7 +55,7 @@ const RoomsScreen = ({  match }) => {
                 </>}
 
             <div className="center-content" >
-                <Paginate keyword={ keyword } page={ pageNumber } />
+                <Paginate keyword={ keyword } page={ page }  pages={pages} route={"/rooms/"} />
             </div>
             </section>
         </Container>

@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 
 const Product  = ({ product }) =>{
   
-    console.log('Product', product);
     const history = useHistory();
 
     const handleClick = () =>{

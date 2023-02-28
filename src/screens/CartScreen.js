@@ -67,10 +67,10 @@ const CartScreen = ({ match , location, history }) =>{
                                 <Link to={`/product/${item.product}`} > {item.name} </Link>
                             </Col>
                             <Col md={2} style={{whiteSpace:"nowrap", alignSelf:'center'}} >
-                                ${item.price} Per Night
+                                ${item.price}
                             </Col>
-                            <Col md={2}  style={{alignSelf:'center'}}>
-                                <strong> {qty} Rooms</strong>
+                            <Col md={2}  style={{alignSelf:'center', whiteSpace:"nowrap"}}>
+                                <strong> {qty} Rooms/Packges</strong>
                             </Col>
                             <Col md={2} >
                                 <Button type="button" variant ='light' onClick={()=> removeFromCartHandler(item.product) } >

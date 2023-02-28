@@ -10,14 +10,13 @@ const Header = () =>{
     const userLogin = useSelector(state=> state.userLogin );
     const { userInfo } = userLogin;
 
-    useEffect(()=>{
-        console.log('called');
-        window.scrollTo(0, 0)
+    const location= window.location.pathname;
 
-    },[]);
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[location]);
 
     const logoutHandler=() => {
-        console.log('logout');
         dispatch(logout());
     }
     return <header>
@@ -53,6 +52,10 @@ const Header = () =>{
                     {/* <LinkContainer to='/admin/userlist' >
                         <NavDropdown.Item>Users</NavDropdown.Item>
                     </LinkContainer> */}
+                    <LinkContainer to='/admin/packageslist' >
+                        <NavDropdown.Item>Packages</NavDropdown.Item>
+                    </LinkContainer>
+
                     <LinkContainer to='/admin/productlist' >
                         <NavDropdown.Item>Rooms</NavDropdown.Item>
                     </LinkContainer>

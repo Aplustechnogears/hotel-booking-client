@@ -5,7 +5,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { useDispatch, useSelector } from 'react-redux';
-import { listProducts } from '../actions/productActions';
+import { listPackages, listProducts } from '../actions/productActions';
 import EachHotelFacility from '../components/EachhotelFacility';
 import { Container } from 'react-bootstrap';
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
@@ -36,18 +36,25 @@ import EachPackage from '../components/EachPackage';
         const productList = useSelector(state=> state.productList )
         const { products, error, loading } = productList
 
+        const packageList = useSelector(state=> state.packageList )
+        
         const handleBookNowClick = () =>{
             history.push('/rooms')
         }
 
         useEffect(()=>{
             dispatch(listProducts( keyword, pageNumber ));
+            dispatch( listPackages('',pageNumber) )
+
 
         },[dispatch, keyword, pageNumber]);
 
         return <div className='container1' >
             <Meta  />
-            <RoomSearchWithBackground image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg3.jpeg')" />
+            <RoomSearchWithBackground 
+                image="linear-gradient(0deg,rgba(0,0,0, 0.4), rgba(0,0,0,0.75)),url('/images/bg3.jpeg')" 
+                heroPara='Explore new experience with GangaRadisson'
+            />
 
             <Container>
             {/* rooms section 1 */}
@@ -183,7 +190,7 @@ import EachPackage from '../components/EachPackage';
                     { loading? <Loader />: error ? <Message>{error}</Message>
                         : <>
                         <div className="flex-wrap" >
-                            {products.slice(0,3).map( (product)=>{
+                            {(packageList?.products || []).slice(0,3).map( (product)=>{
                                 return <Col key={product._id} >
                                 <EachPackage product={product} />
                                 </Col>

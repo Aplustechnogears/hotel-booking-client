@@ -140,7 +140,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
             <Form.Group controlId='category' >
                 <Form.Label>Category</Form.Label>
-                <Form.Control type='text' placeholder="Product Category" value={category} onChange={e=> setCategory( e.target.value ) } >
+                <Form.Control type='text' placeholder="Product Category" value={category} disabled={true} >
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId='description' >

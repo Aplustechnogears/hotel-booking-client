@@ -22,6 +22,8 @@ import {  Route, HashRouter as Router } from 'react-router-dom';
 import AboutScreen from './screens/AboutScreen';
 import ContactScreen from './screens/ContactScreen';
 import RoomsScreen from './screens/RoomsScreen';
+import PackageListScreen from './screens/PackageListScreen';
+import PackageScreen from './screens/PackageScreen';
 
 
 
@@ -40,10 +42,13 @@ function App() {
         <Route path="/register" component ={RegisterScreen} />
         <Route path="/profile" component ={ProfileScreen} />
         <Route path="/product/:id" component ={ProductScreen} />
+        <Route path="/package/:id" component ={PackageScreen} />
         <Route path="/cart/:id?" component={CartScreen} />
         <Route path="/admin/userlist" component={UserListScreen} />
         <Route path="/admin/productlist" component={ProductListScreen} exact/>
         <Route path="/admin/productlist/:pageNumber" component={ProductListScreen} exact />
+        <Route path="/admin/packageslist" component={PackageListScreen} exact/>
+        <Route path="/admin/packageslist/:pageNumber" component={PackageListScreen} exact />
         <Route path="/admin/orderlist" component={OrderListScreen} />
         <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
         <Route path="/page/:pageNumber" component ={HomeScreen} exact />

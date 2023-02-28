@@ -100,7 +100,7 @@ const OrderScreen = ({ match, history }) => {
 
     const handlePaytmPayment = () =>{
         const serverHost = 'https://hotel-booking-payment.onrender.com';
-        const paytmUrl = `${serverHost}/payment?orderId=${orderId}&userId=${userInfo._id}&amount=${order.totalPrice}`
+        const paytmUrl = `${serverHost}/payment?orderId=${orderId}&userId=${userInfo._id}&amount=${order.itemsPrice}`
         window.location.href= paytmUrl;
     }
 
@@ -195,7 +195,7 @@ s
                         <ListGroup.Item>
                             <Row>
                                 <Col>Total</Col>
-                                <Col>INR {order.totalPrice}</Col>
+                                <Col>INR {order.itemsPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         { !order.isPaid ? <ListGroup.Item>

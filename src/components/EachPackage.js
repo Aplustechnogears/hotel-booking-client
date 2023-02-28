@@ -6,7 +6,7 @@ const EachPackage  = ({ product }) =>{
     const history = useHistory();
 
     const handleClick = () =>{
-        history.push('/product/'+product._id);
+        history.push('/package/'+product._id);
     }
 
     return <div className='room-card-container' onClick={handleClick} >

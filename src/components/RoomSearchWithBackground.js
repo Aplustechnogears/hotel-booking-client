@@ -6,7 +6,7 @@ import { listProducts } from '../actions/productActions';
 import Header from './Header'
 
 
-const RoomSearchWithBackground = ({ image = "url('/images/bg1.jpeg')", title = "Book your vacation", showFilters = true, height }) => {
+const RoomSearchWithBackground = ({ image = "url('/images/bg1.jpeg')", title = "Book your vacation", showFilters = true, height, heroPara="" }) => {
 
 
     const queryObj= QueryString.parse(window.location.hash?.split("?")?.[1]);
@@ -29,7 +29,8 @@ const RoomSearchWithBackground = ({ image = "url('/images/bg1.jpeg')", title = "
             <div className='contain-each-board' style={{ backgroundImage: image , height: height }} >
                 <Header />
                 <div>
-                    <h4 className='banner-title home-page-title' style={{ fontSize: "70px", fontWeight: '400' }} > {title}</h4>
+                    <h4 className='banner-title home-page-title' style={{ fontSize: "100px", fontWeight: '400' }} > {title}</h4>
+                    <p className='home-page-para' >{heroPara}</p>
                 </div>
                 <div>
 

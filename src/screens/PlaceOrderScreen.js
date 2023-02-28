@@ -150,7 +150,7 @@ const PlaceOrderScreen = ({ history }) => {
                             className="btn-block" 
                             disabled={cart.cartItems===0} 
                             onClick={placeOrderHandler} >
-                                Book Room
+                                Book Now
                             </Button>
                         </ListGroup.Item>
                     </ListGroup>

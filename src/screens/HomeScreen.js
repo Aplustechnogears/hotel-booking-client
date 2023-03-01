@@ -199,7 +199,7 @@ import EachPackage from '../components/EachPackage';
                     </>}
 
                     <div className="center-content" >
-                        <button className='more-room-btn' >
+                        <button className='more-room-btn' onClick={()=> history.push('/packages') }>
                             View All packages
 
                         </button>

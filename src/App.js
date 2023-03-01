@@ -22,10 +22,9 @@ import {  Route, HashRouter as Router } from 'react-router-dom';
 import AboutScreen from './screens/AboutScreen';
 import ContactScreen from './screens/ContactScreen';
 import RoomsScreen from './screens/RoomsScreen';
+import PackagesScreen from './screens/PackagesScreen';
 import PackageListScreen from './screens/PackageListScreen';
 import PackageScreen from './screens/PackageScreen';
-
-
 
 function App() {
   return (
@@ -56,6 +55,8 @@ function App() {
         <Route path="/contact" component ={ContactScreen} exact />
         <Route path="/rooms" component ={RoomsScreen} exact />
         <Route path="/rooms/:pageNumber" component ={RoomsScreen} exact />
+        <Route path="/packages" component ={PackagesScreen} exact />
+        <Route path="/packages/:pageNumber" component ={PackagesScreen} exact />
 
         <Route path="/" component ={HomeScreen} exact />
 

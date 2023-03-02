@@ -25,7 +25,7 @@ const PlaceOrderScreen = ({ history }) => {
     const checkOutDate = cart?.cartItems?.[0]?.checkOutDate;
     cart.itemsPrice =  floorDigit( cart.cartItems.reduce((acc, item)=> acc + item.price* item.qty ,0) );
     cart.shippingPrice = floorDigit( cart.itemsPrice > 100 ? 0 : 20 );
-    cart.taxPrice = floorDigit( Number((0.18 * cart.itemsPrice).toFixed(2) ) );
+    cart.taxPrice = 0;
     cart.totalPrice= (parseFloat(cart.itemsPrice) + parseFloat(cart.shippingPrice) + parseFloat(cart.taxPrice)).toFixed(2);
     
 

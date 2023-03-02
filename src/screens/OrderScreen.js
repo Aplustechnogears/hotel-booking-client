@@ -37,12 +37,19 @@ const OrderScreen = ({ match, history }) => {
 
     const [emailVerify, setEmailVerify] = useState(null);
     const [verifyLoader, setVerifyLoader] = useState(true);
+    const [isDispatched, setIsDispatched] = useState(false)
 
 
     useEffect(()=>{
+
         if(!userInfo){
             history.push('/login');
         }
+        if(!isDispatched){
+            setIsDispatched(true)
+            dispatch( getOrderDetails( orderId ) )
+        }
+
         // const addPayPalScript = async () => {
         //     console.log('i am here');
         //     const { data: clientId } = await axios.get('https://hotel-server-nbih.onrender.com/api/config/paypal');

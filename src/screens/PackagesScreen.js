@@ -37,7 +37,7 @@ const PackagesScreen = ({  match }) => {
     return <>
 
         {/* Book now section */}
-            <RoomSearchWithBackground image="url('/images/bg2.jpeg')" filter={false} />
+            <RoomSearchWithBackground showFilters ={false} image="url('/images/bg2.jpeg')" filter={false} />
         {/* Book now section */}
 
 

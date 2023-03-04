@@ -21,7 +21,7 @@ const VerifyScreen = () => {
     useEffect(()=>{
         const checkVerified = async () => {
             try{
-                const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/users/${userInfo._id}`);
+                const { data } = await axios.get(`http://18.118.141.158:5000/api/users/${userInfo._id}`);
                 setVerify(data.emailVerified);
                 setEmailLoader(false);
             }catch(err){
@@ -35,7 +35,7 @@ const VerifyScreen = () => {
     const  verifyHandler = async () =>{
         setLoading(true);
         try{
-            const { data } = await axios.get(`https://hotel-server-nbih.onrender.com/api/verify/${userInfo._id}`);
+            const { data } = await axios.get(`http://18.118.141.158:5000/api/verify/${userInfo._id}`);
             setMessage('Verification link has been sent to registered email');
             console.log('data of verify', data);
             setLoading(false);

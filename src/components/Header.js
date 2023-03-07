@@ -29,7 +29,7 @@ const Header = () =>{
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
                 <LinkContainer to="/cart" >
-                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> Reservations</Nav.Link>
+                    <Nav.Link > <i className="fa fa-shopping-cart" ></i> My Booking</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/about"  >
                     <Nav.Link style={{color:'red'}} > <i className="fa fa-shopping-cart" ></i> About</Nav.Link>

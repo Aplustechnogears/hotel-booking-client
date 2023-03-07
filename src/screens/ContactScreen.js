@@ -41,7 +41,7 @@ const ContactScreen = () => {
                     }
                 }
         
-               const  response = await axios.post('http://18.118.141.158:5000/api/users/contact', { email, name, message, city }, config);        
+               const  response = await axios.post('https://cyan-tough-raven.cyclic.app/api/users/contact', { email, name, message, city }, config);        
                 console.log('response',response.data.message);
                 setSuccess(response.data.message)
                 setError('');

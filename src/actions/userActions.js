@@ -14,7 +14,7 @@ export const login  = ( email, password ) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('http://18.118.141.158:5000/api/users/login', { email, password }, config);
+        const { data } = await axios.post('https://cyan-tough-raven.cyclic.app/api/users/login', { email, password }, config);
 
         dispatch({
             type:USER_LOGIN_SUCCESS,
@@ -53,7 +53,7 @@ export const register  = ( name, email, password ) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('http://18.118.141.158:5000/api/users', { name,email, password }, config);
+        const { data } = await axios.post('https://cyan-tough-raven.cyclic.app/api/users', { name,email, password }, config);
 
         dispatch({
             type:USER_REGISTER_SUCCESS,
@@ -91,7 +91,7 @@ export const getUserDetails  = ( id ) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(`http://18.118.141.158:5000/api/users/${id}`, config);
+        const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/users/${id}`, config);
 
         dispatch({
             type:USER_DETAILS_SUCCESS,
@@ -123,7 +123,7 @@ export const updateUserProfile  = ( user ) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(`http://18.118.141.158:5000/api/users/profile`,user, config);
+        const { data } = await axios.put(`https://cyan-tough-raven.cyclic.app/api/users/profile`,user, config);
 
         dispatch({
             type:USER_UPDATE_PROFILE_SUCCESS,

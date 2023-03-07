@@ -52,7 +52,7 @@ const OrderScreen = ({ match, history }) => {
 
         // const addPayPalScript = async () => {
         //     console.log('i am here');
-        //     const { data: clientId } = await axios.get('http://18.118.141.158:5000/api/config/paypal');
+        //     const { data: clientId } = await axios.get('https://cyan-tough-raven.cyclic.app/api/config/paypal');
         //     const script = document.createElement('script');
         //     script.type = "text/javascript"
         //     script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
@@ -67,7 +67,7 @@ const OrderScreen = ({ match, history }) => {
         // }
 
         const verifyHandler =  async () => {
-            const { data } = await axios.get(`http://18.118.141.158:5000/api/users/${userInfo._id}`);
+            const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/users/${userInfo._id}`);
             setEmailVerify(data.emailVerified);
             setVerifyLoader(false);
         }
@@ -75,7 +75,7 @@ const OrderScreen = ({ match, history }) => {
         verifyHandler();
 
         (async () => {  
-            axios.get(`http://18.118.141.158:5000/api/payment/paytm/${orderId}`).then((resp)=>{
+            axios.get(`https://cyan-tough-raven.cyclic.app/api/payment/paytm/${orderId}`).then((resp)=>{
                 if(resp.data.length){
                     if(!order.isPaid){
                         console.log('i am trying');
@@ -106,7 +106,7 @@ const OrderScreen = ({ match, history }) => {
     },[ dispatch, orderId, successPay, order, successDeliver, history, userInfo ]);
 
     const handlePaytmPayment = () =>{
-        const serverHost = 'https://hotel-booking-payment.onrender.com';
+        const serverHost = 'https://pink-inquisitive-kitten.cyclic.app/';
         const paytmUrl = `${serverHost}/payment?orderId=${orderId}&userId=${userInfo._id}&amount=${order.itemsPrice}`
         window.location.href= paytmUrl;
     }

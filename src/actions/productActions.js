@@ -18,7 +18,7 @@ export const listProducts = ( keyword= '' , pageNumber='', roomCount=0, checkInD
             checkOutDate= new Date(checkOutDate).getTime()
         }
 
-        const { data } = await axios.get(`http://18.118.141.158:5000/api/products?keyword=${keyword}&pageNumber=${pageNumber}&roomCount=${roomCount}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`);
+        const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/products?keyword=${keyword}&pageNumber=${pageNumber}&roomCount=${roomCount}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`);
         const query={
             keyword: keyword,
             pageNumber: pageNumber
@@ -52,7 +52,7 @@ export const listPackages = ( keyword= '' , pageNumber='', roomCount=0, checkInD
             checkOutDate= new Date(checkOutDate).getTime()
         }
 
-        const { data } = await axios.get(`http://18.118.141.158:5000/api/products?category=${'Package'}&keyword=${keyword}&pageNumber=${pageNumber}&roomCount=${roomCount}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`);
+        const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/products?category=${'Package'}&keyword=${keyword}&pageNumber=${pageNumber}&roomCount=${roomCount}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`);
         console.log('data---',data);
         const query={
             keyword: keyword,
@@ -77,7 +77,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     try{
         dispatch({ type: PRODUCT_DETAILS_REQUEST  })
 
-        const { data } = await axios.get(`http://18.118.141.158:5000/api/products/${id}`);
+        const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/products/${id}`);
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -106,7 +106,7 @@ export const deleteProduct = ( id ) => async (dispatch, getState) => {
             }
         }
 
-        await axios.delete(`http://18.118.141.158:5000/api/products/${id}`,config);
+        await axios.delete(`https://cyan-tough-raven.cyclic.app/api/products/${id}`,config);
 
         dispatch({
             type:PRODUCT_DELETE_SUCCESS,
@@ -136,7 +136,7 @@ export const createProduct = ( category="Room") => async (dispatch, getState) =>
             }
         }
 
-        const {data} = await axios.post(`http://18.118.141.158:5000/api/products`,{category:category},config);
+        const {data} = await axios.post(`https://cyan-tough-raven.cyclic.app/api/products`,{category:category},config);
 
         dispatch({
             type:PRODUCT_CREATE_SUCCESS,
@@ -168,7 +168,7 @@ export const updateProduct = ( product ) => async (dispatch, getState) => {
             }
         }
 
-        const {data} = await axios.put(`http://18.118.141.158:5000/api/products/${product._id}`,product,config);
+        const {data} = await axios.put(`https://cyan-tough-raven.cyclic.app/api/products/${product._id}`,product,config);
 
         dispatch({
             type:PRODUCT_UPDATE_SUCCESS,
@@ -189,7 +189,7 @@ export const listTopProducts = (  ) => async (dispatch) => {
     try{
         dispatch({ type: PRODUCT_TOP_REQUEST  })
 
-        const { data } = await axios.get(`http://18.118.141.158:5000/api/products/top`);
+        const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/products/top`);
 
         dispatch({
             type: PRODUCT_TOP_SUCCESS,

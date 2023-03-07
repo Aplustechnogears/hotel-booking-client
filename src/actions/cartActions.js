@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS, CART_SAVE_PAYMENT_METHOD } from '../constants/cartConstants';
 
 export const addToCart = (id, qty, checkInDate, checkOutDate) => async (dispatch, getState) => {
-    const { data } = await axios.get(`http://18.118.141.158:5000/api/products/${id}`)
+    const { data } = await axios.get(`https://cyan-tough-raven.cyclic.app/api/products/${id}`)
 
     dispatch({
         type:CART_ADD_ITEM,

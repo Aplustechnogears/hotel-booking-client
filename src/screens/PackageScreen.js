@@ -77,7 +77,7 @@ const PackageScreen = ({ history, match }) => {
                             <img src={product.image} alt="" className='each-room-banner' />
                             <div className='each-room-price-container' >
                                 <h2 className='each-room-name' >{product.name}</h2>
-                                <p className='each-room-price' >From {product.price}$ Per night</p>
+                                <p className='each-room-price' >From {product.price}₹ Per night</p>
                             </div>
                             <div className='each-room-description-container' >
                                 <h5>Description</h5>

@@ -67,7 +67,7 @@ const CartScreen = ({ match , location, history }) =>{
                                 <Link to={`/product/${item.product}`} > {item.name} </Link>
                             </Col>
                             <Col md={2} style={{whiteSpace:"nowrap", alignSelf:'center'}} >
-                                ${item.price}
+                            ₹{item.price}
                             </Col>
                             <Col md={2}  style={{alignSelf:'center', whiteSpace:"nowrap"}}>
                                 <strong> {qty} Rooms/Packges</strong>
@@ -88,7 +88,7 @@ const CartScreen = ({ match , location, history }) =>{
                 <ListGroup variant="flush" >
                     <ListGroup.Item>
                         <h3>Sub Total ({ cartItems.reduce((acc, cur) => acc+  cur.qty, 0 ) }) items </h3>
-                        ${ cartItems.reduce(( acc, item )=> acc + item.qty * item.price, 0).toFixed(2) }
+                        ₹{ cartItems.reduce(( acc, item )=> acc + item.qty * item.price, 0).toFixed(2) }
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <Button type="button" className="btn-block" disabled={ !cartItems.length } onClick={checkoutHandler} > CheckOut</Button>

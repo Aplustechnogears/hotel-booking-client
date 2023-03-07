@@ -15,7 +15,7 @@ const Product  = ({ product }) =>{
                 <img src={ product.image } alt="" className='room-card-image' />
             </div>
             <div style={{ position:'absolute' , background:'black', padding:"1rem", top:10, right:10 , borderRadius:'10px', boxShadow:' 0 10px 45px rgb(10 10 10 / 7%)'}} >
-                <label style={{color:'white', fontWeight:"bold"}} >{product.price}$ / night</label>
+                <label style={{color:'white', fontWeight:"bold"}} >{product.price}₹/ night</label>
             </div>
         </div>
         <div className='flex-center' >

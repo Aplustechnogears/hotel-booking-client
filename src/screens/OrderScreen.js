@@ -161,7 +161,7 @@ s
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </Col>
                                         <Col md={4} >
-                                            {item.qty } X ${item.price} = ${ floorDigit( item.qty * item.price )}
+                                            {item.qty } X ₹{item.price} = ₹{ floorDigit( item.qty * item.price )}
                                         </Col>
 
                                     </Row>

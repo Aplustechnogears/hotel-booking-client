@@ -89,7 +89,7 @@ const AboutScreen = ({ match }) => {
             {/* Visit our facilities section */}
 
             {/* Founders  Container */}
-            <section className='trending-rooms-container' >
+            {/* <section className='trending-rooms-container' >
                 <h1 className='home-page-title' >Founders</h1>
                 {<>
                     <div className="flex-wrap" >
@@ -101,7 +101,7 @@ const AboutScreen = ({ match }) => {
                     </div>
                 </>}
 
-            </section>
+            </section> */}
             {/* Founders Container */}
         </Container>
 

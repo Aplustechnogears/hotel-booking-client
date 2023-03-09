@@ -1,7 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 const Footer = () =>{
+
+    const history = useHistory();
+
     return  <div class="footer-dark">
     <footer>
         <div class="container">
@@ -9,23 +13,23 @@ const Footer = () =>{
                 <div class="col-sm-6 col-md-3 item">
                     <h3>Services</h3>
                     <ul>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Hotel Booking</a></li>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Suite Booking</a></li>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Packages</a></li>
+                        <li><a rel="noreferrer" onClick={()=> history.push('/rooms') } >Rooms Booking</a></li>
+                        <li><a rel="noreferrer" onClick={()=> history.push('/packages') } >Packages</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 item">
                     <h3>About</h3>
                     <ul>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Contact</a></li>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Company</a></li>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Team</a></li>
-                        <li><a rel="noreferrer"  href="www.demolink.com">Careers</a></li>
+
+                        <li><a rel="noreferrer" onClick={()=> history.push('/contact') }>Contact</a></li>
+                        <li><a rel="noreferrer" onClick={()=> history.push('/about') }>About</a></li>
+                        <li><a rel="noreferrer" onClick={()=> history.push('/login') }>Login</a></li>
+                        {/* <li><a rel="noreferrer" onClick={()=> history.push('') }>Careers</a></li> */}
                     </ul>
                 </div>
                 <div class="col-md-6 item text">
                     <h3>Ganga Radisson</h3>
-                    <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    <p>Book the best rooms available in south east region.</p>
                 </div>
                 <div class="col item social"><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-facebook"></i></a><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-twitter"></i></a><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-snapchat"></i></a><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-instagram"></i></a></div>
             </div>

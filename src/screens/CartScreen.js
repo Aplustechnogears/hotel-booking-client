@@ -55,7 +55,7 @@ const CartScreen = ({ match , location, history }) =>{
 
      <Row>
         <Col md={8} >
-            <h1>Confirm Reservations</h1>
+            <h1>Confirm Booking</h1>
             { cartItems.length===0 ? <Message>cart is empty<Link to="/" > Go Back</Link></Message> : <ListGroup variant="flush" >
                 { cartItems.map(item=> {
                     return <ListGroup.Item key={item.product} >

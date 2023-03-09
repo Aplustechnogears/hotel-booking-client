@@ -18,7 +18,7 @@ const ProductScreen = ({ history, match }) => {
     const productList = useSelector(state=> state.productList )
     const { products } = productList;
     const { error, product, loading } = productDetails;
-    const [roomsCount, setRoomsCount] = useState(0);
+    const [roomsCount, setRoomsCount] = useState(1);
     const [checkInDate, setCheckInDate] = useState("");
     const [checkOutDate, setCheckOutDate] = useState("");
     const [errMsg, setErrMsg] = useState('');

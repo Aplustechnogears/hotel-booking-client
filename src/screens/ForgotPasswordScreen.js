@@ -9,7 +9,7 @@ import { login } from '../actions/userActions';
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 
-const LoginScreen = ({ location, history }) => {
+const ForgotPassswordScreen = ({ location, history }) => {
 
     const [email, setEmail]= useState('');
     const [password,setPassword] = useState('');
@@ -26,10 +26,10 @@ const LoginScreen = ({ location, history }) => {
         }
     },[history, userInfo, redirect])
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log('submit');
-        dispatch(login(email, password))
+
+        // dispatch(login(email, password))
     }
 
     return  <>
@@ -41,7 +41,7 @@ const LoginScreen = ({ location, history }) => {
     />
     <Container> 
     <FormContainer>
-        <h1>Sign In </h1>
+        <h1>Enter Email Address </h1>
         { error ? <Message variant="danger" > {error} </Message>: null }
         {loading? <Loader /> : null}
         <Form onSubmit={submitHandler} >
@@ -52,19 +52,8 @@ const LoginScreen = ({ location, history }) => {
                     placeholder="Email" onChange={e=> setEmail(e.target.value) } > 
                 </Form.Control>
             </Form.Group>
-            <Form.Group controlId="password" >
-                <Form.Label>password</Form.Label>
-                <Form.Control 
-                    type="password" value={password}
-                    placeholder="password" onChange={e=> setPassword(e.target.value) } > 
-                </Form.Control>
-            </Form.Group>
-            <Row className="py-3" >
-                <Col>
-                    <Link to={ '/forgot-password' } >Forgot Password</Link>
-                </Col>
-            </Row>
-            <Button type="submit" variant="primary" > Sign In</Button>
+            
+            <Button type="submit" variant="primary" > Send Email</Button>
         </Form>
 
         <Row className="py-3" >
@@ -80,4 +69,4 @@ const LoginScreen = ({ location, history }) => {
 
 }
 
-export default LoginScreen;
+export default ForgotPassswordScreen;

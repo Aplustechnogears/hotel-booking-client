@@ -9,10 +9,11 @@ import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 import axios from 'axios'
 
 
-const ForgotPassswordScreen = ({ location, history }) => {
+const ResetPasswordScreen = ({ location, history, match }) => {
 
     const [email, setEmail]= useState('');
     const [loading, setLoading] = useState(false);
+    const [password, setPassword] = useState('');
     const [error, setError] = useState("");
     const [variant, setVariant] = useState('danger');
     const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -24,15 +25,28 @@ const ForgotPassswordScreen = ({ location, history }) => {
         if(userInfo){
             history.push(redirect);
         }
+
+        ( async () =>{
+            try {
+                const token= match.params.id
+                const response = await axios.post('https://cyan-tough-raven.cyclic.app/api/users/validate-reset-link',{token: token});
+                console.log('response', response);
+                setEmail(response?.data?.email);
+            } catch (error) {
+                console.log('error',error);
+                history.push('/forgot-password');
+            }
+        })();
+
     },[history])
 
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await axios.post('https://cyan-tough-raven.cyclic.app/api/users/get-reset-link', {email});
+            const response = await axios.post('https://cyan-tough-raven.cyclic.app/api/users/reset-password', {email, password});
             setVariant('success');
-            setError("Password Reset Mail sent.");
+            setError(response?.data?.message );
             console.log('response',response);
 
         } catch (error) {
@@ -53,7 +67,7 @@ const ForgotPassswordScreen = ({ location, history }) => {
     />
     <Container> 
     <FormContainer>
-        <h1>Enter Email Address </h1>
+        <h1>Reset Password </h1>
         { error ? <Message variant="success" > {error} </Message>: null }
         {loading? <Loader /> : null}
         <Form onSubmit={submitHandler} >
@@ -61,11 +75,20 @@ const ForgotPassswordScreen = ({ location, history }) => {
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control 
                     type="email" value={email}
+                    disabled={true}
                     placeholder="Email" onChange={e=> setEmail(e.target.value) } > 
                 </Form.Control>
             </Form.Group>
-            
-            <Button type="submit" variant="primary" > Send Email</Button>
+
+            <Form.Group controlId="password" >
+                <Form.Label>New Password</Form.Label>
+                <Form.Control 
+                    type="password" value={password}
+                    placeholder="Password" onChange={e=> setPassword(e.target.value) } > 
+                </Form.Control>
+            </Form.Group>
+
+            <Button type="submit" variant="primary" > Reset Password</Button>
         </Form>
 
         <Row className="py-3" >
@@ -81,4 +104,4 @@ const ForgotPassswordScreen = ({ location, history }) => {
 
 }
 
-export default ForgotPassswordScreen;
+export default ResetPasswordScreen;

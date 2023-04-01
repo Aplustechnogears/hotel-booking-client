@@ -14,14 +14,14 @@ import EachPackage from '../components/EachPackage';
 
 
     const HOTEL_FACILITIES = [
-        { image: "fa fa-wifi", text:"Parking" },
+        { image: "fa fa-car", text:"Parking" },
         { image: "fa fa-floppy-o", text:"Safe" },
-        { image: "fa fa-simplybuilt", text:"Swimming Pool" },
-        { image: "fa fa-cutlery", text:"Spa" },
-        { image: "fa fa-tencent-weibo", text:"Gym" },
-        { image: "fa fa-cutlery", text:"Breakfast" },
+        // { image: "fa fa-simplybuilt", text:"Swimming Pool" },
+        // { image: "fa fa-cutlery", text:"Spa" },
+        // { image: "fa fa-tencent-weibo", text:"Gym" },
+        { image: "fa fa-cutlery", text:"Food" },
         { image: "fa fa-building", text:"Workspace" },
-        { image: "fa fa-bath", text:"Bath" },
+        // { image: "fa fa-bath", text:"Bath" },
     ]
 
     const HomeScreen =  ({ match }) =>{
@@ -61,19 +61,19 @@ import EachPackage from '../components/EachPackage';
             <section className="divide-into-2" >
                 <div className='margin1rem' >
                     <div className='flex margin1rem' >
-                        <div className='flex' >
+                        {/* <div className='flex' >
                             <h1 className='star-number' >5</h1>
                             <h5 className='star-small-number' >Stars</h5>
                         </div>
                         <div className='flex' >
                             <h1 className='star-number' >25</h1>
                             <h5 className='star-small-number' >Rooms</h5>
-                        </div>
+                        </div> */}
 
                     </div>
 
                     <div>
-                        <p className='large-text' >Our hotel is located in the heart of the New Forrest. A five stars lifestyle surrounded by the forest.</p>
+                        <p className='large-text' >Our hotel is located in the city of Hari ki nagri(Haridwar). A five stars lifestyle surrounded by the forest.</p>
                     </div>
                 </div>
                 <div className="center-content" >
@@ -141,7 +141,7 @@ import EachPackage from '../components/EachPackage';
 
             <Container>
                 {/* Visit our facilities section */}
-                <section>
+                {/* <section>
                     <h1 className='home-page-title' >Visit our facilities</h1>
                     <p className='sub-heading-text' >A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of soul.</p>
                     
@@ -179,7 +179,7 @@ import EachPackage from '../components/EachPackage';
 
 
 
-                </section>
+                </section> */}
                 {/* Visit our facilities section */}
 
 

@@ -29,7 +29,7 @@ const Footer = () =>{
                 </div>
                 <div class="col-md-6 item text">
                     <h3>Ganga Radisson</h3>
-                    <p>Book the best rooms available in south east region.</p>
+                    <p>Book the best rooms available in Haridwar Uttarakhand.</p>
                 </div>
                 <div class="col item social"><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-facebook"></i></a><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-twitter"></i></a><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-snapchat"></i></a><a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-instagram"></i></a></div>
             </div>

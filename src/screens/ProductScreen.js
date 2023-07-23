@@ -41,6 +41,10 @@ const ProductScreen = ({ history, match }) => {
         { icon: 'fa fa-deaf', text:'Dryer' },
     ]
 
+    const images_list = [
+        {image:"/images/room1.jpeg"}
+    ]
+
     const handleBookRoom = () => {
         if( !(parseInt(roomsCount) >= 1) ){
             setErrMsg("Rooms Count must be greater than 0");
@@ -66,8 +70,6 @@ const ProductScreen = ({ history, match }) => {
             history.push(`/cart/${match.params.id}?qty=${roomsCount}&checkInDate=${checkInTimeStamp}&checkOutDate=${checkOutTimeStamp}`)
         }
      }
-
-     console.log('product',product);
 
     return <div>
         {loading ? <Loader /> : error ? <Message variant="danger" >{error}</Message>
@@ -145,6 +147,19 @@ const ProductScreen = ({ history, match }) => {
                         </div>
                     </section> 
 
+                    {/* Images section */}
+                    <h1 className='home-page-title' >Feature Images</h1>
+
+                    <section className='images-section-container' > 
+
+                        { images_list.map((item, index)=>{
+                            return <div key={index} >
+                                <img  className='each-image-section' src={ item.image } />
+                            </div>
+                        }) }
+
+                    </section>
+                    {/* Images section */}
 
                     {/* Trending Rooms Container */}
                     <section className='trending-rooms-container' >

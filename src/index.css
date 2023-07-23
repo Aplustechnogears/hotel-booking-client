@@ -732,3 +732,25 @@ img{
   font-size: 18px;
   padding: 8px;
 }
+
+.images-section-container{
+  display: flex;
+  gap: 1.5rem;
+  overflow: auto;
+}
+
+.each-image-section{
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: 200ms ease-in-out;
+}
+
+.each-image-section:hover{
+  transform: scale(1.1);
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+}

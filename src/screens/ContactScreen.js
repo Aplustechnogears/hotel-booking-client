@@ -133,7 +133,7 @@ const ContactScreen = () => {
 
         {/* Map */}
         <section className='map-container' >
-            <iframe title="map" className="map-iframe"  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d19905.696399556287!2d-0.3007084089960577!3d51.417531259591925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s2334+Peterson+Street+Kingston+UK+London+H14D!5e0!3m2!1sen!2s!4v1546697086219" ></iframe>
+            <iframe title="map" className="map-iframe"  src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6911.402960944886!2d78.183088!3d29.988008000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU5JzE2LjgiTiA3OMKwMTAnNTkuMSJF!5e0!3m2!1sen!2sus!4v1690541176786!5m2!1sen!2sus"  ></iframe>    
         </section>
         {/* Map */}
 

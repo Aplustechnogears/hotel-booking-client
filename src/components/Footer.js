@@ -32,9 +32,8 @@ const Footer = () =>{
                     <p>Book the best rooms available in Haridwar Uttarakhand.</p>
                 </div>
                 <div class="col item social">
-                    <a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-facebook"></i></a>
-                    <a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-twitter"></i></a>
-                    <a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-snapchat"></i></a>
+                    <a rel="noreferrer"  href="https://www.facebook.com/profile.php?id=100095253761630"><i class="social-icon ion-social-facebook"></i></a>
+                    <a rel="noreferrer"  href="https://twitter.com/GangaRadisson?t=skaPnzvkznnhD4XIQ_Evzw&s=08"><i class="social-icon ion-social-twitter"></i></a>
                     <a rel="noreferrer"  href="www.demolink.com"><i class="social-icon ion-social-instagram"></i></a>
                     <a rel="noreferrer"  href="mailto:gangaradisson@gmail.com"><i class="social-icon ion-email"></i></a>
                 </div>

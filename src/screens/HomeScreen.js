@@ -77,7 +77,7 @@ import EachPackage from '../components/EachPackage';
                     </div>
                 </div>
                 <div className="center-content" >
-                    <img src="/images/hotel1.jpg" className="half-radius-image" alt="" />
+                    <img src="/images/hotel1.jpeg" className="half-radius-image" alt="" />
                 </div>
             </section>
             {/* rooms section 1 */}

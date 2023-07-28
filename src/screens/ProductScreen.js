@@ -42,7 +42,12 @@ const ProductScreen = ({ history, match }) => {
     ]
 
     const images_list = [
-        {image:"/images/room1.jpeg"}
+        {image:"/images/room1.jpeg"},
+        {image:"/images/room2.jpeg"},
+        {image:"/images/room3.jpeg"},
+        {image:"/images/room4.jpeg"},
+        {image:"/images/room5.jpeg"},
+        {image:"/images/room6.jpeg"},
     ]
 
     const handleBookRoom = () => {

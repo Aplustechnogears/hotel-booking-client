@@ -73,7 +73,7 @@ import EachPackage from '../components/EachPackage';
                     </div>
 
                     <div>
-                        <p className='large-text' >Our hotel is located in the city of Hari ki nagri(Haridwar). A five stars lifestyle surrounded by the forest.</p>
+                        <p className='large-text' >A Serene Boutique Hotel Situated  in the Foothills of the Himalyas.In the city of Haridwar(Hari-ki-Nagri) Which Is Known For Its Divine ganga.A City That Comes Under The State Of Uttrakhand(Devbhoomi).</p>
                     </div>
                 </div>
                 <div className="center-content" >

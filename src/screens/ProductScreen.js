@@ -35,10 +35,7 @@ const ProductScreen = ({ history, match }) => {
         { icon: 'fa fa-wifi', text:'Free Wifi' },
         { icon: 'fa fa-archive', text:'Safe' },
         { icon: 'fa fa-shower', text:'Air Conditioning' },
-        { icon: 'fa fa-facebook', text:'Facebook' },
-        { icon: 'fa fa-fire', text:'Heater' },
-        { icon: 'fa fa-phone', text:'Unlimited Phone' },
-        { icon: 'fa fa-deaf', text:'Dryer' },
+        { icon: 'fa fa-fire', text:'Heater' }
     ]
 
     const images_list = [

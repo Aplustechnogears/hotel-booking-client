@@ -420,6 +420,7 @@ img{
 .each-facility-image{
   font-size: 64px;
   color: #656565;
+  cursor: pointer;
 }
 
 .home-facilities-section{

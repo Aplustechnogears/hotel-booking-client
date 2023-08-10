@@ -10,10 +10,10 @@ import Loader from '../components/Loader';
 import RoomSearchWithBackground from '../components/RoomSearchWithBackground';
 
 const HOTEL_FACILITIES = [
-    { image: "fa fa-facebook", text: "Facebook" },
-    { image: "fa fa-twitter", text: "Twitter" },
-    { image: "fa fa-instagram", text: "Instagram" },
-    { image: "fa fa-youtube", text: "Youtube" },
+    { image: "fa fa-facebook", text: "Facebook", link:"https://www.facebook.com/profile.php?id=100095253761630" },
+    { image: "fa fa-twitter", text: "Twitter", link:"https://twitter.com/GangaRadisson?t=skaPnzvkznnhD4XIQ_Evzw&s=08" },
+    { image: "fa fa-instagram", text: "Instagram", link:"https://instagram.com/ganga_radisson?igshid=MzRlODBiNWFlZA==" },
+    { image: "fa fa-youtube", text: "Youtube", link:"https://youtube.com/@GangaRadisson" },
 ]
 
 const ContactScreen = () => {
@@ -144,7 +144,7 @@ const ContactScreen = () => {
 
             <div className='contain-facility' >
                 {HOTEL_FACILITIES.map((item,i)=>{
-                    return <EachHotelFacility key={i} icon={ item.image } text={ item.text } />
+                    return <EachHotelFacility key={i} icon={ item.image } text={ item.text } link={ item.link } />
                 }) }
             </div>
             

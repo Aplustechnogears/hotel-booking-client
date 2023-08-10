@@ -30,6 +30,7 @@ const Footer = () =>{
                 <div class="col-md-6 item text">
                     <h3>Ganga Radisson</h3>
                     <p>Book the best rooms available in Haridwar Uttarakhand.</p>
+                    <p>Contact Number: <a href="tel:7078798210" style={{color:'inherit'}} >7078798210</a></p>
                 </div>
                 <div class="col item social">
                     <a rel="noreferrer"  href="https://www.facebook.com/profile.php?id=100095253761630"><i class="social-icon ion-social-facebook"></i></a>
